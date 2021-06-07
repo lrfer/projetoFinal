@@ -13,13 +13,13 @@ public abstract class Imoveis implements IImoveis {
 	public LocalDate dataColocadoVendaAlugar;
 	public boolean disponivelLocacaoVenda;
 	private byte situacao;
-	public double area;
+	public String area;
 	
 	public ArrayList<ClienteProprietario> lstClienteProprietario;
 	
 	public Imoveis(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco, LocalDate dataColocadoVendaAlugar,
-			boolean disponivelLocacaoVenda, byte situacao, double area) {
+			boolean disponivelLocacaoVenda, byte situacao, String area) {
 		super();
 		this.venda = venda;
 		this.locacao = locacao;
@@ -130,16 +130,12 @@ public abstract class Imoveis implements IImoveis {
 	public void setDisponivelLocacaoVenda(boolean disponivelLocacaoVenda) {
 		this.disponivelLocacaoVenda = disponivelLocacaoVenda;
 	}
-	public double getArea() {
+	public String getArea() {
 		return this.area;
 	}
-	public boolean setArea(double area) {
-		if (area > 0) {
-			this.area = area;
-			return true;
-		}
-		else
-			return false;
+	public boolean setArea(String area) {
+            this.area = area;
+            return true;
 	}
 
 	

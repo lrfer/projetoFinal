@@ -10,7 +10,7 @@ public class Terreno extends Imoveis {
 
 	public Terreno(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco,
-			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, double area,
+			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, String area,
 			double largura, double comprimento, boolean aclive, boolean declive) {
 		super(venda, locacao, dataConstrucao, aluguelVendaCliente, valorRealAluguelVenda, valorDestinadoImob, endereco,
 				dataColocadoVendaAlugar, disponivelLocacaoVenda, situacao, area);

@@ -12,7 +12,7 @@ public class Residencial extends Imoveis implements IImoveis{
 	
 	public Residencial(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco,
-			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, double area,
+			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, String area,
 			int qtdQuartos, int qtdSuites, int qtdSalasEstar, int nroVagasGaregem, boolean armarioEmbutido,
 			String descricao) {
 		super(venda, locacao, dataConstrucao, aluguelVendaCliente, valorRealAluguelVenda, valorDestinadoImob, endereco,
@@ -24,6 +24,7 @@ public class Residencial extends Imoveis implements IImoveis{
 		this.armarioEmbutido = armarioEmbutido;
 		this.descricao = descricao;
 	}
+        public Residencial(){super();};
 	
 	public int getQtdQuartos() {
 		return qtdQuartos;
@@ -64,17 +65,6 @@ public class Residencial extends Imoveis implements IImoveis{
 	public boolean setNroVagasGaregem(int nroVagasGaregem) {
 		if (nroVagasGaregem > 0) {
 			this.nroVagasGaregem = nroVagasGaregem;
-			return true;
-		}
-		else
-			return false;
-	}
-	public double getArea() {
-		return area;
-	}
-	public boolean setArea(double area) {
-		if (area > 0) {
-			this.area = area;
 			return true;
 		}
 		else

@@ -11,11 +11,32 @@ public class DadosImoveis extends ArquivoBinario<Imoveis> implements IDadosImove
 		System.out.println("Total de imoveis inseridos:");
 		System.out.println(this.vetImoveis.size());
 	}
+        
+        public void Cadastrar(Casa c){
+            this.vetImoveis.add(c);
+                System.out.println("Total de imoveis inseridos:");
+		System.out.println(this.vetImoveis.size());
+        }
+          public void Cadastrar(Terreno c){
+            this.vetImoveis.add(c);
+                System.out.println("Total de imoveis inseridos:");
+		System.out.println(this.vetImoveis.size());
+        }
+          public void Cadastrar(SalaComercial c){
+            this.vetImoveis.add(c);
+                System.out.println("Total de imoveis inseridos:");
+		System.out.println(this.vetImoveis.size());
+        }
+            public void Cadastrar(Apartamento c){
+            this.vetImoveis.add(c);
+                System.out.println("Total de imoveis inseridos:");
+		System.out.println(this.vetImoveis.size());
+        }
 	
 	@Override
 	public void Listar() {
-		for(Imoveis cliente: this.vetImoveis) {
-			cliente.toString();
+		for(Imoveis Casa: this.vetImoveis) {
+			Casa.toString();
 		}
 	}
 	

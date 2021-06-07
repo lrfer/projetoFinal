@@ -3,14 +3,14 @@ import java.time.LocalDate;
 
 public class Apartamento extends Residencial {
 	public int andar;
-	public double valorCondominio;
+	public String valorCondominio;
 	public boolean portaria24hs;
 
 	public Apartamento(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco,
-			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, double area,
+			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, String area,
 			int qtdQuartos, int qtdSuites, int qtdSalasEstar, int nroVagasGaregem, boolean armarioEmbutido,
-			String descricao, int andar, double valorCondominio, boolean portaria24hs) {
+			String descricao, int andar, String valorCondominio, boolean portaria24hs) {
 		super(venda, locacao, dataConstrucao, aluguelVendaCliente, valorRealAluguelVenda, valorDestinadoImob, endereco,
 				dataColocadoVendaAlugar, disponivelLocacaoVenda, situacao, area, qtdQuartos, qtdSuites, qtdSalasEstar,
 				nroVagasGaregem, armarioEmbutido, descricao);
@@ -18,6 +18,7 @@ public class Apartamento extends Residencial {
 		this.valorCondominio = valorCondominio;
 		this.portaria24hs = portaria24hs;
 	}
+        public Apartamento(){super();}
 
 	public int getAndar() {
 		return andar;
@@ -32,17 +33,15 @@ public class Apartamento extends Residencial {
 			return false;
 	}
 
-	public double getValorCondominio() {
+	public String getValorCondominio() {
 		return valorCondominio;
 	}
 
-	public boolean setValorCondominio(double valorCondominio) {
-		if (valorCondominio > 0) {
-			this.valorCondominio = valorCondominio;
+	public boolean setValorCondominio(String valorCondominio) {
+
+                this.valorCondominio = valorCondominio;
 			return true;
-		}
-		else
-			return false;
+
 	}
 
 	public boolean isPortaria24hs() {

@@ -1,12 +1,19 @@
 
 package trabalhoFinal;
 
+import java.time.LocalDate;
+
 
 public class cadastrarApartamento extends javax.swing.JFrame {
+    Apartamento ap = new Apartamento();
+    DadosImoveis Imoveis;
+    DadosClienteProprietario clientes;
 
-
-    public cadastrarApartamento() {
+    public cadastrarApartamento(DadosImoveis imoveis,DadosClienteProprietario clientes) {
         initComponents();
+        this.Imoveis = imoveis;
+        this.clientes = clientes;
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -26,14 +33,14 @@ public class cadastrarApartamento extends javax.swing.JFrame {
         isArmarioEmbutido = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textDescricao = new javax.swing.JTextArea();
         isPortaria24hs = new javax.swing.JCheckBox();
         cadastrar = new javax.swing.JButton();
         labelRua = new javax.swing.JLabel();
         labelNumero = new javax.swing.JLabel();
         labelCep = new javax.swing.JLabel();
         labelCidade = new javax.swing.JLabel();
-        textQtdQuartos1 = new javax.swing.JTextField();
+        textQtdQuartos = new javax.swing.JTextField();
         textRua = new javax.swing.JTextField();
         textCidade = new javax.swing.JTextField();
         textCEP = new javax.swing.JTextField();
@@ -50,7 +57,7 @@ public class cadastrarApartamento extends javax.swing.JFrame {
         labelCondominio = new javax.swing.JLabel();
         textValorCondominio = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelQtdQuartos.setText("Quantidade de quartos");
 
@@ -141,9 +148,9 @@ public class cadastrarApartamento extends javax.swing.JFrame {
 
         jLabel1.setText("Descrição");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textDescricao.setColumns(20);
+        textDescricao.setRows(5);
+        jScrollPane1.setViewportView(textDescricao);
 
         isPortaria24hs.setText("Portaria 24HS?");
         isPortaria24hs.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +165,11 @@ public class cadastrarApartamento extends javax.swing.JFrame {
         });
 
         cadastrar.setText("Cadastrar");
+        cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarMouseClicked(evt);
+            }
+        });
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
@@ -172,16 +184,16 @@ public class cadastrarApartamento extends javax.swing.JFrame {
 
         labelCidade.setText("Cidade");
 
-        textQtdQuartos1.setText("0");
-        textQtdQuartos1.setToolTipText("");
-        textQtdQuartos1.addActionListener(new java.awt.event.ActionListener() {
+        textQtdQuartos.setText("0");
+        textQtdQuartos.setToolTipText("");
+        textQtdQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textQtdQuartos1ActionPerformed(evt);
+                textQtdQuartosActionPerformed(evt);
             }
         });
-        textQtdQuartos1.addKeyListener(new java.awt.event.KeyAdapter() {
+        textQtdQuartos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                textQtdQuartos1KeyTyped(evt);
+                textQtdQuartosKeyTyped(evt);
             }
         });
 
@@ -218,11 +230,6 @@ public class cadastrarApartamento extends javax.swing.JFrame {
             }
         });
 
-        lstClienteProprietario.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         listClienteProprietario.setViewportView(lstClienteProprietario);
 
         jLabel3.setText("Cliente Proprietario");
@@ -276,18 +283,21 @@ public class cadastrarApartamento extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(textQtdQuartos1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textQtdQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(488, 488, 488))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textNroVagasGaragem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelArea, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(textAndar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelCondominio))
-                                        .addGap(112, 112, 112)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(textNroVagasGaragem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(textAndar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(195, 195, 195))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labelArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(75, 75, 75)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(textCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(labelBairro)
@@ -295,32 +305,29 @@ public class cadastrarApartamento extends javax.swing.JFrame {
                                                 .addComponent(textCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(isVenda)
-                                                    .addComponent(textBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                    .addComponent(textBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(labelCep)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(labelQtdSalasEstar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(labelQtdSuites, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(labelQtdQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(textQtdSuites, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(textQtdSalasEstar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(110, 110, 110)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(labelCidade)
-                                                    .addComponent(labelCep)))
+                                                    .addComponent(textQtdSuites, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(textQtdSalasEstar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(171, 171, 171))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(106, 106, 106)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(labelNumero)
-                                                    .addComponent(textNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(textRua, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(labelRua))))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelNroVagasGaragem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(271, 271, 271)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(labelQtdQuartos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(labelQtdSuites, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(labelQtdSalasEstar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                                                .addGap(81, 81, 81)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelNumero)
+                                            .addComponent(labelCidade)
+                                            .addComponent(textNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(textRua, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelRua)))
+                                    .addComponent(labelNroVagasGaragem, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -329,11 +336,12 @@ public class cadastrarApartamento extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(77, 77, 77))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(isPortaria24hs)
-                            .addComponent(jLabel1)
-                            .addComponent(textValorCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelAndar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(labelCondominio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(isPortaria24hs, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textValorCondominio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAndar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -345,20 +353,21 @@ public class cadastrarApartamento extends javax.swing.JFrame {
                     .addComponent(labelRua)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textQtdQuartos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textQtdQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textRua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNumero)
-                            .addComponent(labelQtdSuites))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelQtdSuites)
+                            .addComponent(labelNumero))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textQtdSuites, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textQtdSuites, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelQtdSalasEstar)
@@ -389,15 +398,15 @@ public class cadastrarApartamento extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelAndar)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addGap(29, 29, 29)
                         .addComponent(isVenda)
                         .addGap(61, 61, 61))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelAndar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(textAndar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelCondominio)
@@ -475,11 +484,7 @@ public class cadastrarApartamento extends javax.swing.JFrame {
     }//GEN-LAST:event_textAreaActionPerformed
 
     private void textAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAreaKeyTyped
-                char c = evt.getKeyChar();
-        
-        if(!Character.isDigit(c)){
-            evt.consume();
-        }
+
     }//GEN-LAST:event_textAreaKeyTyped
 
     private void isArmarioEmbutidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isArmarioEmbutidoActionPerformed
@@ -503,13 +508,13 @@ public class cadastrarApartamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastrarActionPerformed
 
-    private void textQtdQuartos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textQtdQuartos1ActionPerformed
+    private void textQtdQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textQtdQuartosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textQtdQuartos1ActionPerformed
+    }//GEN-LAST:event_textQtdQuartosActionPerformed
 
-    private void textQtdQuartos1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textQtdQuartos1KeyTyped
+    private void textQtdQuartosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textQtdQuartosKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_textQtdQuartos1KeyTyped
+    }//GEN-LAST:event_textQtdQuartosKeyTyped
 
     private void textRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textRuaActionPerformed
         // TODO add your handling code here:
@@ -543,6 +548,55 @@ public class cadastrarApartamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textValorCondominioKeyTyped
 
+    private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
+     boolean fields = false;
+    if(this.textRua.getText() == null || this.textRua.getText().isEmpty())
+        fields =  false;
+    if(this.textNumero.getText() == null || this.textNumero.getText().isEmpty())
+        fields =   false;
+    if(this.textCEP.getText() == null || this.textCEP.getText().isEmpty())
+        fields =   false;
+    if(this.textCidade.getText() == null || this.textCidade.getText().isEmpty())
+        fields =   false;
+    if(this.textBairro.getText() == null || this.textBairro.getText().isEmpty())
+        fields =   false;
+    if(this.textArea.getText() == null || this.textArea.getText().isEmpty())
+        fields =   false;
+    if(this.textQtdQuartos.getText() == null || this.textQtdQuartos.getText().isEmpty())
+        fields =   false;
+    if(this.textQtdSuites.getText() == null || this.textQtdSuites.getText().isEmpty())
+        fields =   false;
+    if(this.textQtdSalasEstar.getText() == null || this.textQtdSalasEstar.getText().isEmpty())
+        fields =   false;
+    if(this.textNroVagasGaragem.getText() == null || this.textNroVagasGaragem.getText().isEmpty())
+        fields =   false;
+    if(this.textDescricao.getText() == null ||  this.textDescricao.getText().isEmpty())
+        fields =  false;
+    else
+        fields =   true;
+
+      if(fields){
+      Endereco endereco = new Endereco(this.textRua.getText(),Integer.parseInt(this.textNumero.getText()),Integer.parseInt(this.textCEP.getText()),this.textCidade.getText(),this.textBairro.getText());;
+      this.ap.setVenda(this.isVenda.isSelected());
+      this.ap.setLocacao(!this.isVenda.isSelected());
+      this.ap.setValorRealAluguelVenda(0);
+      this.ap.setValorDestinadoImob(0);
+      this.ap.endereco = endereco;
+      this.ap.setDataColocadoVendaAlugar(LocalDate.now());
+      this.ap.setDisponivelLocacaoVenda(true);
+      this.ap.setSituacao("ATIVO");
+      this.ap.setArea(this.textArea.getSelectedText());
+      this.ap.setQtdQuartos(Integer.parseInt(this.textQtdQuartos.getText()));
+      this.ap.setQtdSuites(Integer.parseInt(this.textQtdSuites.getText()));
+      this.ap.setQtdSalasEstar(Integer.parseInt(this.textQtdSalasEstar.getText()));
+      this.ap.setNroVagasGaregem(Integer.parseInt(this.textNroVagasGaragem.getText()));
+      this.ap.setAndar(Integer.parseInt(this.textAndar.getText()));
+      this.ap.setPortaria24hs(this.isPortaria24hs.isSelected());
+      this.Imoveis.Cadastrar(this.ap);
+      super.dispose();
+      }
+    }//GEN-LAST:event_cadastrarMouseClicked
+
 
     public static void main(String args[]) {
 
@@ -563,11 +617,6 @@ public class cadastrarApartamento extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(cadastrarApartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new cadastrarApartamento().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -579,7 +628,6 @@ public class cadastrarApartamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelAndar;
     private javax.swing.JLabel labelArea;
@@ -594,15 +642,16 @@ public class cadastrarApartamento extends javax.swing.JFrame {
     private javax.swing.JLabel labelQtdSuites;
     private javax.swing.JLabel labelRua;
     private javax.swing.JScrollPane listClienteProprietario;
-    private javax.swing.JList<String> lstClienteProprietario;
+    public javax.swing.JList<String> lstClienteProprietario;
     private javax.swing.JTextField textAndar;
     private javax.swing.JTextField textArea;
     private javax.swing.JTextField textBairro;
     private javax.swing.JTextField textCEP;
     private javax.swing.JTextField textCidade;
+    private javax.swing.JTextArea textDescricao;
     private javax.swing.JTextField textNroVagasGaragem;
     private javax.swing.JTextField textNumero;
-    private javax.swing.JTextField textQtdQuartos1;
+    private javax.swing.JTextField textQtdQuartos;
     private javax.swing.JTextField textQtdSalasEstar;
     private javax.swing.JTextField textQtdSuites;
     private javax.swing.JTextField textRua;

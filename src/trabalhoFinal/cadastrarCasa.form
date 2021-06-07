@@ -2,8 +2,14 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
+  <AccessibilityProperties>
+    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+    <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="cadastrar"/>
+    </Property>
+  </AccessibilityProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -28,7 +34,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="textQtdQuartos1" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="textQtdQuartos" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="488" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -42,7 +48,7 @@
                                   <Component id="textNroVagasGaragem" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="labelArea" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                                   <Component id="textArea" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <Component id="isArmarioEmbutido" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="isArmarioEmbutidoCasa" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -98,7 +104,7 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="listClienteProprietario" alignment="0" pref="125" max="32767" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="dataConstrucao" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -122,21 +128,21 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textQtdQuartos1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textQtdQuartos" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textRua" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dataConstrucao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelQtdSuites" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="labelNumero" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelQtdSuites" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="textQtdSuites" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="textNumero" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textQtdSuites" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -144,9 +150,9 @@
                           <Component id="labelCidade" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="textQtdSalasEstar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="textCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textQtdSalasEstar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -154,9 +160,9 @@
                           <Component id="labelCep" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="textNroVagasGaragem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="textCEP" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textNroVagasGaragem" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -179,7 +185,7 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="isArmarioEmbutido" min="-2" max="-2" attributes="0"/>
+              <Component id="isArmarioEmbutidoCasa" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="isPiscina" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -273,13 +279,13 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textAreaKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="isArmarioEmbutido">
+    <Component class="javax.swing.JCheckBox" name="isArmarioEmbutidoCasa">
       <Properties>
         <Property name="label" type="java.lang.String" value="Tem armario embutido?"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isArmarioEmbutidoActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="isArmarioEmbutidoKeyPressed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isArmarioEmbutidoCasaActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="isArmarioEmbutidoCasaKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -294,11 +300,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="textDescricao">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textDescricaoKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -325,6 +334,7 @@
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadastrarMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarActionPerformed"/>
       </Events>
     </Component>
@@ -348,14 +358,14 @@
         <Property name="text" type="java.lang.String" value="Cidade"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textQtdQuartos1">
+    <Component class="javax.swing.JTextField" name="textQtdQuartos">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textQtdQuartos1ActionPerformed"/>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textQtdQuartos1KeyTyped"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textQtdQuartosActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textQtdQuartosKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textRua">
@@ -393,12 +403,12 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="dataConstrucao">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="(DD/MM/AAAA)"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataConstrucaoActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="listClienteProprietario">

@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -40,20 +40,26 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="textQtdQuartos1" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="textQtdQuartos" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="488" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="textNroVagasGaragem" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="labelArea" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
-                                          <Component id="textArea" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="textAndar" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="labelCondominio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="textNroVagasGaragem" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Component id="textArea" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Component id="textAndar" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="labelArea" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="textCEP" min="-2" pref="66" max="-2" attributes="0"/>
                                           <Component id="labelBairro" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -64,43 +70,38 @@
                                                   <Component id="textBairro" min="-2" pref="170" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Component id="labelCep" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="labelQtdSalasEstar" max="32767" attributes="0"/>
-                                              <Component id="labelQtdSuites" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="labelQtdQuartos" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="textQtdSuites" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="textQtdSuites" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Component id="textQtdSalasEstar" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="textQtdSalasEstar" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="labelQtdQuartos" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labelQtdSuites" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labelQtdSalasEstar" pref="170" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="labelCidade" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="labelCep" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="labelNumero" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="textNumero" min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <Component id="textRua" min="-2" pref="170" max="-2" attributes="0"/>
-                                                  <Component id="labelRua" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="labelNumero" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCidade" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textNumero" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                          <Component id="textRua" min="-2" pref="170" max="-2" attributes="0"/>
+                                          <Component id="labelRua" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Component id="labelNroVagasGaragem" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="labelNroVagasGaragem" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -113,12 +114,13 @@
                       </Group>
                       <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="isPortaria24hs" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="textValorCondominio" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="labelAndar" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="labelCondominio" alignment="0" pref="170" max="32767" attributes="0"/>
+                          <Component id="isPortaria24hs" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textValorCondominio" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="labelAndar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -136,22 +138,24 @@
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textQtdQuartos1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textRua" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="textQtdQuartos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="textRua" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelNumero" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelQtdSuites" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelQtdSuites" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="textNumero" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="textQtdSuites" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="textQtdSuites" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -193,16 +197,16 @@
                       <Component id="textBairro" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="labelAndar" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="isVenda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="labelAndar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="textAndar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelCondominio" min="-2" max="-2" attributes="0"/>
@@ -328,7 +332,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="textDescricao">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -350,6 +354,7 @@
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadastrarMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarActionPerformed"/>
       </Events>
     </Component>
@@ -373,14 +378,14 @@
         <Property name="text" type="java.lang.String" value="Cidade"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textQtdQuartos1">
+    <Component class="javax.swing.JTextField" name="textQtdQuartos">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textQtdQuartos1ActionPerformed"/>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textQtdQuartos1KeyTyped"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textQtdQuartosActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textQtdQuartosKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textRua">
@@ -436,18 +441,13 @@
         <Component class="javax.swing.JList" name="lstClienteProprietario">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-                <StringItem index="4" value="Item 5"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="cadastrarCasa_jList1"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
       </SubComponents>

@@ -8,7 +8,7 @@ public class Casa extends Residencial {
 
 	public Casa(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco,
-			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, double area,
+			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, String area,
 			int qtdQuartos, int qtdSuites, int qtdSalasEstar, int nroVagasGaregem, boolean armarioEmbutido,
 			String descricao, boolean piscina, boolean condominio) {
 		super(venda, locacao, dataConstrucao, aluguelVendaCliente, valorRealAluguelVenda, valorDestinadoImob, endereco,
@@ -17,6 +17,7 @@ public class Casa extends Residencial {
 		this.piscina = piscina;
 		this.condominio = condominio;
 	}
+        public Casa(){super();};
 
 	public boolean isPiscina() {
 		return piscina;

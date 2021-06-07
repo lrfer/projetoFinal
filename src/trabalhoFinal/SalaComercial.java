@@ -8,7 +8,7 @@ public class SalaComercial extends Imoveis {
 
 	public SalaComercial(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco,
-			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, double area,
+			LocalDate dataColocadoVendaAlugar, boolean disponivelLocacaoVenda, byte situacao, String area,
 			int qtdBanheiros, int qtdComodos) {
 		super(venda, locacao, dataConstrucao, aluguelVendaCliente, valorRealAluguelVenda, valorDestinadoImob, endereco,
 				dataColocadoVendaAlugar, disponivelLocacaoVenda, situacao, area);
