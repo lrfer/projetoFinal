@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhoFinal;
 
-/**
- *
- * @author lr_fe
- */
 public class telaPrincipal extends javax.swing.JFrame {
     private DadosImoveis dadosImoveis = new DadosImoveis();
     private DadosClienteProprietario dadosClienteProprietario = new DadosClienteProprietario();
@@ -31,6 +22,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Trabalho Final");
 
         btnImoveis.setText("Imoveis");
         btnImoveis.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,13 +66,11 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
         );
 
-        jButton2.getAccessibleContext().setAccessibleName("Cliente");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImoveisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImoveisMouseClicked
-        telaImoveis imoveis = new telaImoveis();
+        telaImoveis imoveis = new telaImoveis(this.dadosImoveis, this.dadosClienteProprietario);
         imoveis.setVisible(true);
     }//GEN-LAST:event_btnImoveisMouseClicked
 
