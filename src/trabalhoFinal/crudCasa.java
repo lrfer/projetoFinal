@@ -21,8 +21,12 @@ public class crudCasa extends javax.swing.JFrame {
                 initComponents();
                 LoadTable();
     }
+    private void mockCasa(){
+        Casa casa1 = new Casa();
+    }
     
-    public void LoadTable(){
+    
+    private void LoadTable(){
         DefaultTableModel model = new DefaultTableModel(new Object[]{
         "Rua", "Numero", "Cep", "Cidade", "Bairro", "Qtd quartos", "Qtd Suites", "Qtd Salas Estar", "Area", "E venda?", "Tem armario", "Descrição",
         "Piscina?", "Condominio?"},0);
