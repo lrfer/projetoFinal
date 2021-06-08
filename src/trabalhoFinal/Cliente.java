@@ -1,19 +1,27 @@
 package trabalhoFinal;
+
+import java.time.LocalDate;
+
 public class Cliente extends Pessoa implements ICliente {
 
 	public String Email;
 	public String Sexo;
 	public String EstadoCivil;
 	public String Profissao;
+        public boolean proprietario;
+        public LocalDate DataCadastroPrimeiroImovel;
+
 	
 	public Cliente(String cpf, String nome, int telContato, Endereco endereco, String email, String sexo,
-			String estadoCivil, String profissao) {
+			String estadoCivil, String profissao,boolean proprietario) {
 		super(cpf, nome, telContato, endereco);
 		Email = email;
 		Sexo = sexo;
 		EstadoCivil = estadoCivil;
 		Profissao = profissao;
+                proprietario = proprietario;
 	}
+        public Cliente(){super();}
 
 	public String getEmail() {
 		return Email;

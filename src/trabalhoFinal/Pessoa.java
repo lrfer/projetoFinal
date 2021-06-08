@@ -16,7 +16,7 @@ public class Pessoa {
 		this.telContato = telContato;
 		this.endereco = endereco;
 	}
-
+        public Pessoa(){};
 
 	public String getCpf() {
 		return cpf;

@@ -1,7 +1,8 @@
 package trabalhoFinal;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Apartamento extends Residencial {
+public class Apartamento extends Residencial implements Serializable{
 	public int andar;
 	public String valorCondominio;
 	public boolean portaria24hs;

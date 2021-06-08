@@ -26,20 +26,20 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane2" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="ruaNome" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                  <Component id="rua" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rua" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                                  <Component id="ruaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="cadastrar" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="novo" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="312" max="-2" attributes="0"/>
@@ -69,9 +69,18 @@
                                               <Component id="bairro" min="-2" pref="90" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="delete" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="delete" min="-2" pref="150" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="cancelar" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jButton1" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="save" min="-2" pref="150" max="-2" attributes="0"/>
+                                                  <Component id="gerarArquivoBinario" min="-2" pref="150" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -79,21 +88,20 @@
                           </Group>
                           <Component id="isVenda" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jTextField1" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="area" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="69" max="-2" attributes="0"/>
+                              <Component id="largura" min="-2" pref="69" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField3" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="comprimento" min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="aclive" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="declive" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="246" max="32767" attributes="0"/>
+                      <EmptySpace pref="264" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -104,7 +112,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rua" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ruaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -115,7 +123,7 @@
                   <Component id="CEP" alignment="1" max="32767" attributes="0"/>
                   <Component id="cidade" alignment="1" max="32767" attributes="0"/>
                   <Component id="bairro" alignment="1" max="32767" attributes="0"/>
-                  <Component id="ruaNome" max="32767" attributes="0"/>
+                  <Component id="rua" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -125,24 +133,30 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" max="-2" attributes="0">
-                  <Component id="jTextField1" alignment="3" max="32767" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" max="32767" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" max="32767" attributes="0"/>
+                  <Component id="area" alignment="3" max="32767" attributes="0"/>
+                  <Component id="largura" alignment="3" max="32767" attributes="0"/>
+                  <Component id="comprimento" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="isVenda" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+              <Component id="aclive" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="declive" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="save" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="update" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="cadastrar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="novo" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="delete" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="gerarArquivoBinario" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="362" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -150,12 +164,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="rua">
+    <Component class="javax.swing.JLabel" name="ruaLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Rua"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="ruaNome">
+    <Component class="javax.swing.JTextField" name="rua">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -200,7 +214,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="modelo">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="10" rowCount="0">
@@ -274,32 +288,45 @@
               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modeloMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="modeloKeyPressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="cadastrar">
+    <Component class="javax.swing.JButton" name="novo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+        <Property name="text" type="java.lang.String" value="Novo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="update">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="delete">
       <Properties>
         <Property name="text" type="java.lang.String" value="Deletar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="text" type="java.lang.String" value="Area"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="area">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="areaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -307,29 +334,48 @@
         <Property name="text" type="java.lang.String" value="Largura"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="largura">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Comprimento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="comprimento">
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="aclive">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aclive?"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+    <Component class="javax.swing.JCheckBox" name="declive">
       <Properties>
         <Property name="text" type="java.lang.String" value="Declive?"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="gerarArquivoBinario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Gerar Arquivo Binario"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gerarArquivoBinarioActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="save">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="cancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

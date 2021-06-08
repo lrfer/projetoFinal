@@ -8,9 +8,9 @@ package trabalhoFinal;
 public class telaImoveis extends javax.swing.JFrame {
 
     DadosImoveis dadosImoveis;
-    DadosClienteProprietario clientesProprietarios;
+    DadosClientes clientesProprietarios;
 
-    public telaImoveis(DadosImoveis imoveis, DadosClienteProprietario prop) {
+    public telaImoveis(DadosImoveis imoveis, DadosClientes prop) {
         initComponents();
         this.dadosImoveis = imoveis;
         this.clientesProprietarios = prop;

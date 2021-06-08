@@ -1,8 +1,9 @@
 package trabalhoFinal;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SalaComercial extends Imoveis {
+public class SalaComercial extends Imoveis implements Serializable {
 	public int qtdBanheiros;
 	public int qtdComodos;
 
@@ -15,6 +16,7 @@ public class SalaComercial extends Imoveis {
 		this.qtdBanheiros = qtdBanheiros;
 		this.qtdComodos = qtdComodos;
 	}
+        public SalaComercial(){super();}
 
 	public int getQtdBanheiros() {
 		return qtdBanheiros;

@@ -10,6 +10,9 @@ public class DadosClienteUsuario extends ArquivoBinario<ClienteUsuario> implemen
 		System.out.println("Total de Clientes Usuario inseridos:");
 		System.out.println(this.vetClienteUsuario.size());
 	}
+        public ArrayList<ClienteUsuario>  getClientesUsuarios(){
+            return this.vetClienteUsuario;
+        }
 	
 	@Override
 	public void Listar() {

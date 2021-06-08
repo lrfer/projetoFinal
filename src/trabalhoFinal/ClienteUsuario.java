@@ -6,9 +6,10 @@ public class ClienteUsuario extends Cliente {
 
 	public ClienteUsuario(String nome, String cPF,Endereco endereco, int telContato, String email, String sexo,
 			String estadoCivil, String profissao) {
-		super(nome, cPF, telContato, endereco, email, sexo, estadoCivil, profissao);
+		super(nome, cPF, telContato, endereco, email, sexo, estadoCivil, profissao,false);
 	}
 	
+        public ClienteUsuario(){};
 	@Override
 	public double calculaBonusCliente() {
 		if (this.BomPagador.isEmpty())

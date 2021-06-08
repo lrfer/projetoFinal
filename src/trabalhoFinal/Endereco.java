@@ -1,5 +1,6 @@
 package trabalhoFinal;
-public class Endereco {
+import java.io.Serializable;  
+public class Endereco implements Serializable {
 	public String rua;
 	public int nro;
 	public int cep;
@@ -16,6 +17,7 @@ public class Endereco {
 		this.bairro = bairro;
 	}
 	
+        public Endereco(){super();}
 	public String getRua() {
 		return rua;
 	}

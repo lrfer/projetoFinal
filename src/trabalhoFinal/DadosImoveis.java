@@ -1,14 +1,81 @@
 package trabalhoFinal;
 
-import java.util.*;
 
-public class DadosImoveis extends ArquivoBinario<Imoveis> implements IDadosImoveis  {
+import java.io.File;
+import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.*;
+import javax.swing.JOptionPane;
+
+public class DadosImoveis  implements IDadosImoveis  {
 	private ArrayList<Imoveis> vetImoveis = new ArrayList<Imoveis>();
         private ArrayList<Casa> vetCasa = new ArrayList<Casa>();
         private ArrayList<Apartamento> vetApartamento = new ArrayList<Apartamento>();
         private ArrayList<Terreno> vetTerreno = new ArrayList<Terreno>();
         private ArrayList<SalaComercial> vetComercial = new ArrayList<SalaComercial>();
 	
+        
+        
+       public void GerarArquivoBinarioSala(ArrayList<SalaComercial> lista,String nomeArquivo) {
+          String path = "C:\\Users\\Public\\" + nomeArquivo + ".tmp";
+           try{
+               for(SalaComercial c : lista){
+                   FileOutputStream fileOut = new FileOutputStream(path);
+                   ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+                   objOut.writeObject(c);
+                   System.out.print("Sucesso foi gravado em " + path);
+               }
+           }
+           catch(Exception ex){
+               System.out.print(ex);
+           }
+       }        
+       public void GerarArquivoBinarioCasa(ArrayList<Casa> lista,String nomeArquivo) {
+          String path = "C:\\Users\\Public\\" + nomeArquivo + ".tmp";
+           try{
+               for(Casa c : lista){
+                   FileOutputStream fileOut = new FileOutputStream(path);
+                   ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+                   objOut.writeObject(c);
+                   System.out.print("Sucesso foi gravado em " + path);
+               }
+           }
+           catch(Exception ex){
+               System.out.print(ex);
+           }
+       }        
+       public void GerarArquivoBinarioApartamento(ArrayList<Apartamento> lista,String nomeArquivo) {
+          String path = "C:\\Users\\Public\\" + nomeArquivo + ".tmp";
+           try{
+               for(Apartamento c : lista){
+                   FileOutputStream fileOut = new FileOutputStream(path);
+                   ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+                   objOut.writeObject(c);
+                   System.out.print("Sucesso foi gravado em " + path);
+               }
+           }
+           catch(Exception ex){
+               System.out.print(ex);
+           }
+       }
+               
+       public void GerarArquivoBinarioTerreno(ArrayList<Terreno> lista,String nomeArquivo) {
+          String path = "C:\\Users\\Public\\" + nomeArquivo + ".tmp";
+           try{
+               for(Terreno c : lista){
+                   FileOutputStream fileOut = new FileOutputStream(path);
+                   ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+                   objOut.writeObject(c);
+                   System.out.print("Sucesso foi gravado em " + path);
+               }
+           }
+           catch(Exception ex){
+               System.out.print(ex);
+           }
+       }
+       
+        
 	@Override
 	public void Cadastrar(Imoveis c) {
 		this.vetImoveis.add(c);

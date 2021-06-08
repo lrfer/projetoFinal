@@ -8,6 +8,7 @@ public class BomPagador {
 		Nome = nome;
 		CPF = cPF;
 	}
+        public BomPagador(){};
 
 	public String getNome() {
 		return Nome;

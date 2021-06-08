@@ -1,7 +1,8 @@
 package trabalhoFinal;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Casa extends Residencial {
+public class Casa extends Residencial implements Serializable {
 
 	public boolean piscina;
 	public boolean condominio;
@@ -17,7 +18,7 @@ public class Casa extends Residencial {
 		this.piscina = piscina;
 		this.condominio = condominio;
 	}
-        public Casa(){super();};
+        public Casa(){};
 
 	public boolean isPiscina() {
 		return piscina;

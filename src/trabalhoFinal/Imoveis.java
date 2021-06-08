@@ -1,8 +1,9 @@
 package trabalhoFinal;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public abstract class Imoveis implements IImoveis {
+public abstract class Imoveis implements IImoveis, Serializable{
 	public boolean venda;
 	public boolean locacao;
 	public LocalDate dataConstrucao;
@@ -15,7 +16,7 @@ public abstract class Imoveis implements IImoveis {
 	private byte situacao;
 	public String area;
 	
-	public ArrayList<ClienteProprietario> lstClienteProprietario;
+	public ArrayList<Cliente> lstCliente;
 	
 	public Imoveis(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco, LocalDate dataColocadoVendaAlugar,
@@ -36,7 +37,7 @@ public abstract class Imoveis implements IImoveis {
 	
 	public Imoveis(boolean venda, boolean locacao, LocalDate dataConstrucao, double aluguelVendaCliente,
 			double valorRealAluguelVenda, double valorDestinadoImob, Endereco endereco, LocalDate dataColocadoVendaAlugar,
-			boolean disponivelLocacaoVenda, ArrayList<ClienteProprietario> lstClienteProprietario) {
+			boolean disponivelLocacaoVenda, ArrayList<Cliente> lstClienteProprietario) {
 		super();
 		this.venda = venda;
 		this.locacao = locacao;
@@ -47,7 +48,7 @@ public abstract class Imoveis implements IImoveis {
 		this.endereco = endereco;
 		this.dataColocadoVendaAlugar = dataColocadoVendaAlugar;
 		this.disponivelLocacaoVenda = disponivelLocacaoVenda;
-		this.lstClienteProprietario = lstClienteProprietario;
+		this.lstCliente = lstClienteProprietario;
 	}
 	
 	public Imoveis() {
