@@ -19,7 +19,7 @@ public class Cliente extends Pessoa implements ICliente {
 		Sexo = sexo;
 		EstadoCivil = estadoCivil;
 		Profissao = profissao;
-                proprietario = proprietario;
+                this.proprietario = proprietario;
 	}
         public Cliente(){super();}
 

@@ -17,7 +17,7 @@ public class Funcionario extends Pessoa {
 		DataIngressoImobiliaria = dataIngressoImobiliaria;
 		Cargo = cargo;
 	}
-
+        public Funcionario(){}
 	public int getTelefone() {
 		return Telefone;
 	}

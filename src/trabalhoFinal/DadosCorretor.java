@@ -18,6 +18,9 @@ public class DadosCorretor extends ArquivoBinario<Corretor> implements IDadosCor
 			cliente.toString();
 		}
 	}
+        public ArrayList<Corretor> getCorretor(){
+            return this.vetCorretor;
+        }
 	
 	@Override
 	public Corretor Buscar(String nomeCliente ) {

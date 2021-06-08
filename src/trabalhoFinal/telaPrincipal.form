@@ -29,9 +29,9 @@
               <Component id="btnImoveis" min="-2" pref="160" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton3" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="crudTransacao" min="-2" pref="160" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jButton1" min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="btnFuncionarios" min="-2" pref="160" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="btnClientes" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
@@ -46,11 +46,11 @@
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnImoveis" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btnFuncionarios" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="btnClientes" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="59" max="32767" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="crudTransacao" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -65,10 +65,13 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnImoveisMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnFuncionarios">
       <Properties>
         <Property name="text" type="java.lang.String" value="Funcionarios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFuncionariosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnClientes">
       <Properties>
@@ -78,10 +81,13 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnClientesMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="crudTransacao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fazer Transacao"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crudTransacaoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

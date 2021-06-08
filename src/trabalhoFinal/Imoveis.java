@@ -15,6 +15,7 @@ public abstract class Imoveis implements IImoveis, Serializable{
 	public boolean disponivelLocacaoVenda;
 	private byte situacao;
 	public String area;
+        public String nome;
 	
 	public ArrayList<Cliente> lstCliente;
 	

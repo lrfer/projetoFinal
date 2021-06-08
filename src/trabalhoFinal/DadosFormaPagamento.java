@@ -21,6 +21,9 @@ public class DadosFormaPagamento extends ArquivoBinario<FormaPagamento> implemen
 		}
 	}
 	
+        public ArrayList<FormaPagamento> getFormaPagamento(){
+            return this.vetFormaPagamento;
+        }
 	
 	@Override
 	public FormaPagamento Buscar(String tipo ) {

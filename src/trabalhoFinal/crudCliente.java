@@ -69,6 +69,7 @@ public class crudCliente extends javax.swing.JFrame {
         jLabel8.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CRUD Cliente");
         setPreferredSize(new java.awt.Dimension(714, 500));
 
         jLabel1.setText("Nome");
@@ -322,6 +323,7 @@ public class crudCliente extends javax.swing.JFrame {
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         if(modo.equals("New")){
+            try{
         Cliente novo = new Cliente();
         if(!novo.isCPF(cpf.getText()))
             JOptionPane.showMessageDialog(null, "CPF INVALIDO");
@@ -329,6 +331,10 @@ public class crudCliente extends javax.swing.JFrame {
         novo = this.parseFormToObject();
         clientes.add(novo);
         }
+            }
+        catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Há algum campo invalido");
+         }
         }
          if(modo.equals("Update")){
             int index = table.getSelectedRow();
@@ -351,11 +357,11 @@ public class crudCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void tableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMousePressed
-       System.out.print(table.getSelectedRow());
         int index = table.getSelectedRow();
         if(index >= 0 && index < clientes.size()){
             var c = this.clientes.get(index);
         modo = "Selection";
+        this.clearForm();
         this.fillForm(c);
         DisplayBtn(modo);
         }
@@ -373,8 +379,8 @@ public class crudCliente extends javax.swing.JFrame {
         if(this.clientes.size() > 0){
             for(Cliente c : clientes){
                 Object linha []= new Object[]{clientes.indexOf(c),c.getNome(),c.getCpf(),c.getTelContato(),
-                 c.getEmail(),c.getProfissao(),c.endereco.getRua(),c.endereco.getNro(),c.proprietario,
-                 c.endereco.getCidade()};
+                 c.getEmail(),c.getProfissao(),c.endereco.getRua(),c.endereco.getNro(),c.endereco.getCidade(),
+                c.proprietario};
                 model.addRow(linha);
             }
         }
@@ -388,10 +394,11 @@ public class crudCliente extends javax.swing.JFrame {
        {
            case "Navegar":
                this.disableForm();
+               this.clearForm();
                novo.setEnabled(true);
+               update.setEnabled(false);
                salvar.setEnabled(false);
                delete.setEnabled(false);
-               update.setEnabled(true);
                break;
            case "New":
                this.enableForm();
@@ -408,11 +415,13 @@ public class crudCliente extends javax.swing.JFrame {
                break;
            case "Delete":
                novo.setEnabled(true);
+               update.setEnabled(false);
                salvar.setEnabled(false);
                delete.setEnabled(false);
                break;
            case "Selection":
                this.disableForm();
+               update.setEnabled(true);
                novo.setEnabled(true);
                salvar.setEnabled(false);
                delete.setEnabled(true);
@@ -492,7 +501,7 @@ public class crudCliente extends javax.swing.JFrame {
         bairro.setText(c.endereco.getBairro());
         cpf.setText(c.getCpf());
         nome.setText(c.getNome());
-        telContato.setText(c.getNome());
+        telContato.setText(String.valueOf(c.getTelContato()));
         email.setText(c.getEmail());
         sexo.setText(c.getSexo());
         estadoCivil.setText(c.getEstadoCivil());

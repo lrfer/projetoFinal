@@ -76,6 +76,7 @@ public class crudClienteUsuario extends javax.swing.JFrame {
         update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CRUD Cliente Usuario");
 
         jLabel1.setText("Nome");
 
@@ -372,14 +373,22 @@ public class crudClienteUsuario extends javax.swing.JFrame {
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         if(modo.equals("New")){
+            try{
         ClienteUsuario novo = new ClienteUsuario();
         if(!novo.isCPF(cpf.getText()))
             JOptionPane.showMessageDialog(null, "CPF INVALIDO");
         else{
         novo = this.parseFormToObjetct();
         clientes.add(novo);
+        this.LoadList(true);
         }
-        }
+            }
+        
+        catch(Exception ex)
+                {
+                JOptionPane.showMessageDialog(null, "Há algum campo invalido");
+                }
+         }
         if(modo.equals("Update")){
             int index = table.getSelectedRow();
             ClienteUsuario update = this.parseFormToObjetct();
@@ -401,9 +410,11 @@ public class crudClienteUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void tableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMousePressed
-       System.out.print(table.getSelectedRow());
-        int index = table.getSelectedRow();
+       int index = table.getSelectedRow();
         if(index >= 0 && index < clientes.size()){
+        var c = this.clientes.get(index);
+        this.clearForm();
+        this.fillForm(c);
         modo = "Selection";
         DisplayBtn(modo);
         }
@@ -416,7 +427,7 @@ public class crudClienteUsuario extends javax.swing.JFrame {
         pagador.addWindowListener(new java.awt.event.WindowAdapter(){
           @Override
         public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-            LoadList();
+            LoadList(false);
         }});
 
     }//GEN-LAST:event_bomPagadorActionPerformed
@@ -425,14 +436,21 @@ public class crudClienteUsuario extends javax.swing.JFrame {
          modo = "Update";
         DisplayBtn(modo);
     }//GEN-LAST:event_updateActionPerformed
-private void LoadList(){
+    private void LoadList(boolean clear){
     DefaultListModel<String> listModel = new DefaultListModel<>();
+    if(!clear){
      for(BomPagador c : pagador)
      {
          listModel.addElement(c.Nome);
      }
+    }
+    if(clear){
+        listModel.clear();
+        this.pagador.clear();
+    }
 this.lstBomPagador.setModel(listModel);
 }
+
     
    private void LoadTable(){
         DefaultTableModel model = new DefaultTableModel(new Object[]{
@@ -469,6 +487,7 @@ this.lstBomPagador.setModel(listModel);
                delete.setEnabled(false);
                break;
            case "Update":
+               this.enableForm();
                novo.setEnabled(false);
                salvar.setEnabled(true);
                delete.setEnabled(false);
@@ -503,6 +522,7 @@ this.lstBomPagador.setModel(listModel);
         estadoCivil.setText("");
         profissao.setText("");
         clienteProprietario.setSelected(false);
+        LoadList(true);
     }
     private void disableForm(){
         rua.setEnabled(false);
@@ -555,6 +575,25 @@ this.lstBomPagador.setModel(listModel);
         result.proprietario = clienteProprietario.isSelected();
         return result;
     }
+      private void fillForm(ClienteUsuario c){
+        rua.setText(c.endereco.getRua());
+        numero.setText(String.valueOf(c.endereco.getNro()));
+        cep.setText(String.valueOf(c.endereco.getCep()));
+        cidade.setText(c.endereco.getCidade());
+        bairro.setText(c.endereco.getBairro());
+        cpf.setText(c.getCpf());
+        nome.setText(c.getNome());
+        telContato.setText(String.valueOf(c.getTelContato()));
+        email.setText(c.getEmail());
+        sexo.setText(c.getSexo());
+        estadoCivil.setText(c.getEstadoCivil());
+        profissao.setText(c.getProfissao());
+        clienteProprietario.setSelected(c.proprietario);
+        for(BomPagador b :c.BomPagador){
+            this.pagador.add(b);
+        }
+        this.LoadList(false);
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

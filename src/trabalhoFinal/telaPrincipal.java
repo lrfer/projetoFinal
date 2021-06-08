@@ -7,6 +7,10 @@ public class telaPrincipal extends javax.swing.JFrame {
     private DadosImoveis dadosImoveis = new DadosImoveis();
     private DadosClientes dadosClientes = new DadosClientes();
     private DadosClienteUsuario dadosClientesUsuario = new DadosClienteUsuario();
+    private DadosCorretor dadosCorretor = new DadosCorretor();
+    private DadosFuncionarios dadosFuncionario = new DadosFuncionarios();
+    private DadosFormaPagamento dadosFormaPagamento = new DadosFormaPagamento();
+    private DadosTransacao dadosTransacao = new DadosTransacao();
     public telaPrincipal() {
         initComponents();
     }
@@ -16,9 +20,9 @@ public class telaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         btnImoveis = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnFuncionarios = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        crudTransacao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trabalho Final");
@@ -30,7 +34,12 @@ public class telaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Funcionarios");
+        btnFuncionarios.setText("Funcionarios");
+        btnFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFuncionariosActionPerformed(evt);
+            }
+        });
 
         btnClientes.setText("Cliente");
         btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -39,7 +48,12 @@ public class telaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Fazer Transacao");
+        crudTransacao.setText("Fazer Transacao");
+        crudTransacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crudTransacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,9 +64,9 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addComponent(btnImoveis, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crudTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
                         .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
@@ -63,10 +77,10 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImoveis, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(crudTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
 
@@ -88,6 +102,16 @@ public class telaPrincipal extends javax.swing.JFrame {
         telaClientes clientes = new telaClientes(this.dadosClientes,this.dadosClientesUsuario);
         clientes.setVisible(true);
     }//GEN-LAST:event_btnClientesMouseClicked
+
+    private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed
+        telaFuncionario func = new telaFuncionario(this.dadosFuncionario,this.dadosCorretor);
+        func.setVisible(true);
+    }//GEN-LAST:event_btnFuncionariosActionPerformed
+
+    private void crudTransacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudTransacaoActionPerformed
+        telaTransancao tran = new telaTransancao(this.dadosFormaPagamento,this.dadosTransacao);
+        tran.setVisible(true);
+    }//GEN-LAST:event_crudTransacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,8 +149,8 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnFuncionarios;
     private javax.swing.JButton btnImoveis;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton crudTransacao;
     // End of variables declaration//GEN-END:variables
 }

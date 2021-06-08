@@ -78,35 +78,35 @@ public class DadosImoveis  implements IDadosImoveis  {
         
 	@Override
 	public void Cadastrar(Imoveis c) {
+                 this.vetImoveis.add(c);
 		this.vetImoveis.add(c);
 		System.out.println("Total de imoveis inseridos:");
-		System.out.println(this.vetImoveis.size() + this.vetCasa.size()
-                + this.vetApartamento.size() + this.vetComercial.size() + this.vetTerreno.size());
+		System.out.println(this.vetImoveis.size());
 	}
         
         public void Cadastrar(Casa c){
+            this.vetImoveis.add(c);
             this.vetCasa.add(c);
                 System.out.println("Total de imoveis inseridos:");
-		System.out.println(this.vetImoveis.size() + this.vetCasa.size()
-                + this.vetApartamento.size() + this.vetComercial.size() + this.vetTerreno.size());
+		System.out.println(this.vetImoveis.size());
         }
           public void Cadastrar(Terreno c){
+             this.vetImoveis.add(c);
             this.vetImoveis.add(c);
                 System.out.println("Total de imoveis inseridos:");
-		System.out.println(this.vetImoveis.size() + this.vetCasa.size()
-                + this.vetApartamento.size() + this.vetComercial.size() + this.vetTerreno.size());
+		System.out.println(this.vetImoveis.size());
         }
           public void Cadastrar(SalaComercial c){
+             this.vetImoveis.add(c);
             this.vetImoveis.add(c);
                 System.out.println("Total de imoveis inseridos:");
-		System.out.println(this.vetImoveis.size() + this.vetCasa.size()
-                + this.vetApartamento.size() + this.vetComercial.size() + this.vetTerreno.size());
+		System.out.println(this.vetImoveis.size());
         }
             public void Cadastrar(Apartamento c){
+             this.vetImoveis.add(c);
             this.vetApartamento.add(c);
                 System.out.println("Total de imoveis inseridos:");
-		System.out.println(this.vetImoveis.size() + this.vetCasa.size()
-                + this.vetApartamento.size() + this.vetComercial.size() + this.vetTerreno.size());
+		System.out.println(this.vetImoveis.size());
         }
 	
 	@Override
@@ -148,6 +148,9 @@ public class DadosImoveis  implements IDadosImoveis  {
     @Override
     public ArrayList<Terreno> getTerrenos() {
         return this.vetTerreno;
+    }
+    public ArrayList<Imoveis> getImoveis(){
+        return this.vetImoveis;
     }
 
 }

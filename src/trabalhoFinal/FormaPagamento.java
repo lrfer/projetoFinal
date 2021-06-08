@@ -7,6 +7,7 @@ public class FormaPagamento {
 		super();
 		this.tipo = tipo;
 	}
+        public FormaPagamento(){}
 
 	public String getTipo() {
 		return tipo;

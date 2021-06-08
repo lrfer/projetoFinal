@@ -14,7 +14,7 @@ public class Corretor extends Funcionario {
 		CursoVendas = cursoVendas;
 		VendasMes = 0;
 	}
-	
+	public Corretor(){}
 	public double getVendasMes() {
 		return VendasMes;
 	}

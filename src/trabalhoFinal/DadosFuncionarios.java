@@ -20,7 +20,9 @@ public class DadosFuncionarios implements IDadosFuncionarios  {
 			cliente.toString();
 		}
 	}
-	
+	public ArrayList<Funcionario> getFuncionarios(){
+            return vetFuncionario;
+        }
 	
 	@Override
 	public Funcionario Buscar(String nome ) {
