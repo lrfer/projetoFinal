@@ -9,16 +9,22 @@ public class Transacao {
 	public Imoveis imoveis;
 	public FormaPagamento formaPagamento;
 	public Corretor corretor;
+        public String valorCliente;
+        public String ValorReal;
+        public String ValorDestinadoImob;
 	
-	public Transacao(LocalDate dataTrasacao, int nroContato, ClienteUsuario clienteUsuario, Imoveis imoveis,
-			FormaPagamento formaPagamento, Corretor corretor) {
+	public Transacao(int nroContato, ClienteUsuario clienteUsuario, Imoveis imoveis,
+			FormaPagamento formaPagamento, Corretor corretor,String valorCliente,String valorReal, String valorImob) {
 		super();
-		this.dataTrasacao = dataTrasacao;
+		this.dataTrasacao = LocalDate.now();
 		this.nroContato = nroContato;
 		this.clienteUsuario = clienteUsuario;
 		this.imoveis = imoveis;
 		this.formaPagamento = formaPagamento;
 		this.corretor = corretor;
+                this.ValorDestinadoImob = valorImob;
+                this.ValorReal = valorReal;
+                this.valorCliente = valorCliente;
 	}
 	
 	public Transacao(ClienteUsuario clienteUsuario, Imoveis imoveis) {
@@ -29,6 +35,7 @@ public class Transacao {
 		this.clienteUsuario = clienteUsuario;
 		this.imoveis = imoveis;
 	}
+        public Transacao(){}
 
 	public LocalDate getDataTrasacao() {
 		return dataTrasacao;

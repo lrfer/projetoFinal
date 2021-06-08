@@ -7,7 +7,7 @@ public class Corretor extends Funcionario {
 	public static double VendasMes;
 	public static final double PorcentagemComissao = 0.05;
 	
-	public Corretor(String cpf, String nome, int telContato, Endereco endereco, int telefone, int telCelular,
+	public Corretor(String cpf, String nome, String telContato, Endereco endereco, String telefone, String telCelular,
 			LocalDate dataIngressoImobiliaria, String cargo, LocalDate dataInicioCorretor, String cursoVendas) {
 		super(cpf, nome, telContato, endereco, telefone, telCelular, dataIngressoImobiliaria, cargo);
 		DataInicioCorretor = dataInicioCorretor;

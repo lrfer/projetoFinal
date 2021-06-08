@@ -485,7 +485,7 @@ public class crudCliente extends javax.swing.JFrame {
         result.endereco.setBairro(bairro.getText());
         result.setCpf(cpf.getText());
         result.setNome(nome.getText());
-        result.setTelContato(Integer.parseInt(telContato.getText()));
+        result.setTelContato(telContato.getText());
         result.setEmail(email.getText());
         result.setSexo(sexo.getText());
         result.setEstadoCivil(estadoCivil.getText());

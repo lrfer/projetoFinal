@@ -6,6 +6,7 @@
 package trabalhoFinal;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
@@ -16,20 +17,25 @@ public class efetuarTransacao extends javax.swing.JFrame {
     DadosFormaPagamento pag;
     DadosCorretor cor;
     DadosImoveis imov;
-    ArrayList<FormaPagamento> formas = new ArrayList<FormaPagamento>();
-    ArrayList<Corretor> corretores = new ArrayList<Corretor>();
-    ArrayList<Imoveis> imoveis = new ArrayList<Imoveis>();
-    public efetuarTransacao(DadosFormaPagamento pag,DadosCorretor cor, DadosImoveis imov){
+    DadosTransacao dados;
+    ArrayList<FormaPagamento> formas;
+    ArrayList<Corretor> corretores;
+    List<Imoveis> imoveis;
+    ArrayList<ClienteUsuario> cliente;
+    public efetuarTransacao(DadosFormaPagamento pag,DadosCorretor cor, DadosImoveis imov,DadosTransacao dados,DadosClienteUsuario clientes){
+        initComponents();
         this.pag = pag;
         this.cor = cor;
         this.imov = imov;
-        this.formas = pag.getFormaPagamento();
         this.corretores = cor.getCorretor();
-        this.imoveis = imov.getImoveis();
+        this.formas = pag.getFormaPagamento();
+        this.imoveis = imov.getAtivos();
+        this.cliente = clientes.getClientesUsuarios();
+        this.dados = dados;
         this.LoadLstImov();
         this.LoadLstPagamento();
-        this.LoadLstCorretor();
-        initComponents();
+       this.LoadLstCorretor();
+       this.LoadLstCliente();
     }
     public efetuarTransacao() {
         initComponents();
@@ -49,6 +55,19 @@ public class efetuarTransacao extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstFormaPagamento = new javax.swing.JList<>();
+        btnEfetuar = new javax.swing.JButton();
+        historicoTrasancao = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        lstClienteUsuario = new javax.swing.JList<>();
+        jLabel5 = new javax.swing.JLabel();
+        numeroContrato = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        valorSugeridoCliente = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        valorRealVenda = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        valorDestinadoImob = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,7 +84,7 @@ public class efetuarTransacao extends javax.swing.JFrame {
         jLabel2.setText("Corretor");
 
         lstCorretor.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -75,31 +94,89 @@ public class efetuarTransacao extends javax.swing.JFrame {
         jLabel3.setText("Forma de Pagamento");
 
         lstFormaPagamento.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         lstFormaPagamento.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(lstFormaPagamento);
 
+        btnEfetuar.setText("Fazer transação");
+        btnEfetuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEfetuarActionPerformed(evt);
+            }
+        });
+
+        historicoTrasancao.setText("Historico de transaçõoes");
+        historicoTrasancao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoTrasancaoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Cliente imobiliaria");
+
+        lstClienteUsuario.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(lstClienteUsuario);
+
+        jLabel5.setText("Numero Contrato");
+
+        jLabel6.setText("Valor sugerido Cliente Venda/Alugar(R$XX,XX)");
+
+        jLabel7.setText("Valor Real Venda/alugar(R$XX,XX)");
+
+        jLabel8.setText("Valor destinado a Imob(R$XX,XX)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEfetuar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(historicoTrasancao))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(valorSugeridoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(215, 215, 215))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(valorRealVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(valorDestinadoImob, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,35 +184,107 @@ public class efetuarTransacao extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numeroContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valorSugeridoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valorRealVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(valorDestinadoImob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEfetuar)
+                        .addGap(37, 37, 37)
+                        .addComponent(historicoTrasancao))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(29, 30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void historicoTrasancaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoTrasancaoActionPerformed
+        historicoTransacao tr = new historicoTransacao(this.dados);
+        tr.setVisible(true);
+    }//GEN-LAST:event_historicoTrasancaoActionPerformed
+
+    private void btnEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfetuarActionPerformed
+        try{
+        int indexImovel = lstImovel.getSelectedIndex();
+        int indexCorretor = lstCorretor.getSelectedIndex();
+        int indexPagamento = lstFormaPagamento.getSelectedIndex();
+        int indexCliente = lstClienteUsuario.getSelectedIndex();
+        var imovel = this.imov.Get(indexImovel);
+        var corretor = this.cor.get(indexCorretor);
+        var pagamento = this.pag.Get(indexPagamento);
+        var cliente = this.cliente.get(indexCliente);
+        Transacao t = new Transacao();
+        t.ValorDestinadoImob = this.valorDestinadoImob.getText();
+        t.ValorReal = this.valorRealVenda.getText();
+        t.valorCliente = this.valorSugeridoCliente.getText();
+        t.corretor = new Corretor();
+        t.corretor = corretor;
+        t.formaPagamento = new FormaPagamento();
+        t.formaPagamento = pagamento;
+        t.clienteUsuario = new ClienteUsuario();
+        t.clienteUsuario = cliente;
+        t.imoveis = imovel;
+        this.imov.setUso(imovel);
+        this.LoadLstImov();
+        }
+        catch(Exception ex){
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnEfetuarActionPerformed
+private void LoadLstCliente(){
+     DefaultListModel<String> listModelPag = new DefaultListModel<>();
+        for(ClienteUsuario p: cliente){
+            listModelPag.addElement(p.nome);
+        }
+        
+   this.lstClienteUsuario.setModel(listModelPag);
+}
     private void LoadLstPagamento(){
         DefaultListModel<String> listModelPag = new DefaultListModel<>();
-        for(FormaPagamento p: formas)
-            listModelPag.addElement(p.getTipo());
-        this.lstFormaPagamento.setModel(listModelPag);
+        for(FormaPagamento p: formas){
+            listModelPag.addElement(p.tipo);
+        }
+        
+   this.lstFormaPagamento.setModel(listModelPag);
     }
 private void LoadLstCorretor(){
         DefaultListModel<String> listModelCorretor = new DefaultListModel<>();
-        for(Corretor p: corretores)
+        for(Corretor p: corretores){
             listModelCorretor.addElement(p.getNome());
-        this.lstFormaPagamento.setModel(listModelCorretor);
+        }
+        this.lstCorretor.setModel(listModelCorretor);
     }
 private void LoadLstImov(){
     DefaultListModel<String> listModelImov = new DefaultListModel<>();
-        for(Imoveis p: imoveis)
-            listModelImov.addElement(p.nome);
+        for(Imoveis p: imoveis){
+            listModelImov.addElement(p.toString());
+        }
         this.lstImovel.setModel(listModelImov);
 }
     public static void main(String args[]) {
@@ -172,14 +321,27 @@ private void LoadLstImov(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEfetuar;
+    private javax.swing.JButton historicoTrasancao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JList<String> lstClienteUsuario;
     private javax.swing.JList<String> lstCorretor;
     private javax.swing.JList<String> lstFormaPagamento;
     private javax.swing.JList<String> lstImovel;
+    private javax.swing.JTextField numeroContrato;
+    private javax.swing.JTextField valorDestinadoImob;
+    private javax.swing.JTextField valorRealVenda;
+    private javax.swing.JTextField valorSugeridoCliente;
     // End of variables declaration//GEN-END:variables
 }

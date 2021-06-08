@@ -34,5 +34,8 @@ public class DadosCorretor extends ArquivoBinario<Corretor> implements IDadosCor
 		 }*/
 		 return c;
 	}
+        public Corretor get(int i){
+            return this.vetCorretor.get(i);
+        }
 
 }

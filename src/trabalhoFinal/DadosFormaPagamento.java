@@ -37,5 +37,8 @@ public class DadosFormaPagamento extends ArquivoBinario<FormaPagamento> implemen
 		 }
 		 return c;
 	}
+        public FormaPagamento Get(int i){
+            return this.vetFormaPagamento.get(i);
+        }
 
 }

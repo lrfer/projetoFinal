@@ -109,7 +109,8 @@ public class telaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFuncionariosActionPerformed
 
     private void crudTransacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudTransacaoActionPerformed
-        telaTransancao tran = new telaTransancao(this.dadosFormaPagamento,this.dadosTransacao);
+        telaTransancao tran = new telaTransancao(this.dadosFormaPagamento,this.dadosTransacao,
+        this.dadosCorretor,this.dadosImoveis,this.dadosClientesUsuario);
         tran.setVisible(true);
     }//GEN-LAST:event_crudTransacaoActionPerformed
 

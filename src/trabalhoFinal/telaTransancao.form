@@ -27,7 +27,7 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="crudFormaPagamento" min="-2" pref="229" max="-2" attributes="0"/>
               <EmptySpace pref="37" max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="200" max="-2" attributes="0"/>
+              <Component id="efetuarTransacao" min="-2" pref="200" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -38,7 +38,7 @@
               <EmptySpace pref="51" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="crudFormaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="efetuarTransacao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
           </Group>
@@ -54,10 +54,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crudFormaPagamentoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="efetuarTransacao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Efetuar Transa&#xe7;&#xe3;o"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="efetuarTransacaoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

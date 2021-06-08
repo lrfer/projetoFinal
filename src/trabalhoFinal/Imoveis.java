@@ -56,12 +56,9 @@ public abstract class Imoveis implements IImoveis, Serializable{
 		this.venda = false;
 		this.locacao = true;
 		this.dataConstrucao = LocalDate.now();
-		this.aluguelVendaCliente = 0;
-		this.valorRealAluguelVenda = 0;
-		this.valorDestinadoImob = 0;
-		this.endereco = null;
 		this.dataColocadoVendaAlugar = LocalDate.now();
-		this.disponivelLocacaoVenda = false;
+		this.disponivelLocacaoVenda = true;
+                this.setSituacao("ATIVO");
 	}
 	
 	public double calculaIndiceVendaLocacao() {
@@ -139,6 +136,9 @@ public abstract class Imoveis implements IImoveis, Serializable{
             this.area = area;
             return true;
 	}
+        public int Filter(){
+            return this.situacao;
+        }
 
 	
 	public void setSituacao(String situacao) {
@@ -153,9 +153,9 @@ public abstract class Imoveis implements IImoveis, Serializable{
 	
 	public String getSituacao() {
 		if(this.situacao == 1)
-			return "Ativo";
+			return "ATIVO";
 		if(this.situacao == 2)
-			return "Inativo";
+			return "INATIVO";
 		if(this.situacao == 3)
 			return "USO";
 		else

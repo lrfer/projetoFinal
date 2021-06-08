@@ -73,4 +73,8 @@ public class Terreno extends Imoveis implements Serializable {
 		else
 			return 0;
 	};
+         @Override
+        public String toString(){
+            return "Terreno - " + this.endereco.nro + " " + this.endereco.rua;
+        }
 }

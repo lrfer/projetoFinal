@@ -5,11 +5,11 @@ import java.util.InputMismatchException;
 public class Pessoa {
 	public String cpf;
 	public String nome;
-	public int telContato;
+	public String telContato;
 	public Endereco endereco;
 	
 	
-	public Pessoa(String cpf, String nome, int telContato, Endereco endereco) {
+	public Pessoa(String cpf, String nome, String telContato, Endereco endereco) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
@@ -46,13 +46,13 @@ public class Pessoa {
 	}
 
 
-	public int getTelContato() {
+	public String getTelContato() {
 		return telContato;
 	}
 
 
-	public boolean setTelContato(int telContato) {
-		if(telContato > 0) {
+	public boolean setTelContato(String telContato) {
+		if(telContato.length() > 0) {
 		this.telContato = telContato;
 		return true;
 		}

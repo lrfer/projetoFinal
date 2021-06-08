@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 public class crudCasa extends javax.swing.JFrame {
     DadosImoveis dadosImoveis;
     DadosClientes clientes;
-    ArrayList<Casa> casas = new ArrayList<Casa>();
+    ArrayList<Casa> casas;
      String modo;
     public crudCasa(DadosClientes clientes, DadosImoveis imoveis) {
         initComponents();
@@ -352,7 +352,7 @@ public class crudCasa extends javax.swing.JFrame {
              try{
         Casa novo = new Casa();
         novo = this.parseFormToObject();
-        casas.add(novo);
+        this.dadosImoveis.Cadastrar(novo);
              }
              catch(Exception ex){
                  JOptionPane.showMessageDialog(null, "Há algum campo invalido");

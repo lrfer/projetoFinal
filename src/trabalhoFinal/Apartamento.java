@@ -60,4 +60,8 @@ public class Apartamento extends Residencial implements Serializable{
 		else
 			return 0;
 	};
+        @Override
+        public String toString(){
+            return "Apartamento - " + this.endereco.nro + " " + this.endereco.rua;
+        }
 }

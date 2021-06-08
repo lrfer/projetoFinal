@@ -12,7 +12,7 @@ public class Cliente extends Pessoa implements ICliente {
         public LocalDate DataCadastroPrimeiroImovel;
 
 	
-	public Cliente(String cpf, String nome, int telContato, Endereco endereco, String email, String sexo,
+	public Cliente(String cpf, String nome, String telContato, Endereco endereco, String email, String sexo,
 			String estadoCivil, String profissao,boolean proprietario) {
 		super(cpf, nome, telContato, endereco);
 		Email = email;

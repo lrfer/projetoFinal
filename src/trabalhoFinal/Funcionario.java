@@ -3,13 +3,13 @@ import java.time.LocalDate;
 
 public class Funcionario extends Pessoa {
 	
-	public int Telefone;
-	public int TelCelular;
+	public String Telefone;
+	public String TelCelular;
 	public LocalDate DataIngressoImobiliaria;
 	public String Cargo;
 	public static double SalarioBase = 1000;
 	
-	public Funcionario(String cpf, String nome, int telContato, Endereco endereco, int telefone, int telCelular,
+	public Funcionario(String cpf, String nome, String telContato, Endereco endereco, String telefone, String telCelular,
 			LocalDate dataIngressoImobiliaria, String cargo) {
 		super(cpf, nome, telContato, endereco);
 		Telefone = telefone;
@@ -18,12 +18,12 @@ public class Funcionario extends Pessoa {
 		Cargo = cargo;
 	}
         public Funcionario(){}
-	public int getTelefone() {
+	public String getTelefone() {
 		return Telefone;
 	}
 
-	public boolean setTelefone(int telefone) {
-		if (telefone > 0) {
+	public boolean setTelefone(String telefone) {
+		if (telefone.length() > 0) {
 			this.Telefone = telefone;
 			return true;
 		}
@@ -31,12 +31,12 @@ public class Funcionario extends Pessoa {
 			return false;
 	}
 
-	public int getTelCelular() {
+	public String getTelCelular() {
 		return TelCelular;
 	}
 
-	public boolean setTelCelular(int telCelular) {
-		if (telCelular > 0) {
+	public boolean setTelCelular(String telCelular) {
+		if (telCelular.length() > 0) {
 			this.TelCelular = telCelular;
 			return true;
 		}

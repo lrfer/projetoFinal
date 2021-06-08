@@ -43,4 +43,8 @@ public class Casa extends Residencial implements Serializable {
 		else
 			return 0;
 	};
+        @Override
+        public String toString(){
+            return "Casa - " + this.endereco.nro + " " + this.endereco.rua;
+        }
 }

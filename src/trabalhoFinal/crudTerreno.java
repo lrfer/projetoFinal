@@ -9,14 +9,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author lr_fe
- */
 public class crudTerreno extends javax.swing.JFrame {
     DadosImoveis dadosImoveis;
     DadosClientes clientes;
-    ArrayList<Terreno> terrenos = new ArrayList<Terreno>();
+    ArrayList<Terreno> terrenos;
     String modo;
     public crudTerreno(DadosClientes prop, DadosImoveis imoveis) {
         initComponents();
@@ -24,6 +20,7 @@ public class crudTerreno extends javax.swing.JFrame {
         this.clientes = prop;
         modo = "Navegar";
         this.DisplayBtn(modo);
+        this.terrenos = imoveis.getTerrenos();
         this.LoadTable();
     }
 

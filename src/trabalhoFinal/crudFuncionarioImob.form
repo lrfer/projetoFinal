@@ -116,16 +116,16 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nome" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="telefone" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="cpf" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="telContato" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="telCelular" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="nome" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="telefone" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cpf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="telContato" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="telCelular" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" pref="20" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="cargo" min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="cargo" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
@@ -136,18 +136,18 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rua" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="numero" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="cep" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="cidade" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="bairro" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="rua" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="numero" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cep" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cidade" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="bairro" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cancelar" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="salvar" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="novo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="update" alignment="3" min="-2" max="-2" attributes="0"/>

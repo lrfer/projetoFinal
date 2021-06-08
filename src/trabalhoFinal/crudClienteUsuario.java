@@ -381,6 +381,8 @@ public class crudClienteUsuario extends javax.swing.JFrame {
         novo = this.parseFormToObjetct();
         clientes.add(novo);
         this.LoadList(true);
+        this.clearForm();
+        LoadTable();
         }
             }
         
@@ -394,8 +396,7 @@ public class crudClienteUsuario extends javax.swing.JFrame {
             ClienteUsuario update = this.parseFormToObjetct();
             clientes.set(index, update);
         }
-        this.clearForm();
-        LoadTable();
+
         modo = "Navegar";
         DisplayBtn(modo); 
     }//GEN-LAST:event_salvarActionPerformed
@@ -567,7 +568,7 @@ this.lstBomPagador.setModel(listModel);
         result.endereco.setBairro(bairro.getText());
         result.setCpf(cpf.getText());
         result.setNome(nome.getText());
-        result.setTelContato(Integer.parseInt(telContato.getText()));
+        result.setTelContato(telContato.getText());
         result.setEmail(email.getText());
         result.setSexo(sexo.getText());
         result.setEstadoCivil(estadoCivil.getText());

@@ -12,10 +12,17 @@ package trabalhoFinal;
 public class telaTransancao extends javax.swing.JFrame {
     DadosFormaPagamento pag;
     DadosTransacao tran;
-    public telaTransancao(DadosFormaPagamento pag, DadosTransacao tran){
+    DadosCorretor cor;
+    DadosImoveis imov;
+    DadosClienteUsuario cli;
+    public telaTransancao(DadosFormaPagamento pag, DadosTransacao tran,DadosCorretor cor,
+            DadosImoveis imov,DadosClienteUsuario cli){
         initComponents();
         this.pag = pag;
         this.tran = tran;
+        this.cor = cor;
+        this.imov = imov;
+        this.cli = cli;
     }
     public telaTransancao() {
         initComponents();
@@ -31,7 +38,7 @@ public class telaTransancao extends javax.swing.JFrame {
     private void initComponents() {
 
         crudFormaPagamento = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        efetuarTransacao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -42,7 +49,12 @@ public class telaTransancao extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Efetuar Transação");
+        efetuarTransacao.setText("Efetuar Transação");
+        efetuarTransacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                efetuarTransacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,7 +64,7 @@ public class telaTransancao extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(crudFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(efetuarTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
@@ -61,7 +73,7 @@ public class telaTransancao extends javax.swing.JFrame {
                 .addContainerGap(51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(crudFormaPagamento)
-                    .addComponent(jButton2))
+                    .addComponent(efetuarTransacao))
                 .addGap(44, 44, 44))
         );
 
@@ -72,6 +84,12 @@ public class telaTransancao extends javax.swing.JFrame {
         crudFormaPagamento pag = new crudFormaPagamento(this.pag);
         pag.setVisible(true);
     }//GEN-LAST:event_crudFormaPagamentoActionPerformed
+
+    private void efetuarTransacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efetuarTransacaoActionPerformed
+       efetuarTransacao pay = new efetuarTransacao(this.pag,this.cor,this.imov,this.tran,this.cli);
+      pay.setVisible(true);
+
+    }//GEN-LAST:event_efetuarTransacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,6 +128,6 @@ public class telaTransancao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crudFormaPagamento;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton efetuarTransacao;
     // End of variables declaration//GEN-END:variables
 }

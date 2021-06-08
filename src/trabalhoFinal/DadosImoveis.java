@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.*;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 
 public class DadosImoveis  implements IDadosImoveis  {
@@ -14,6 +15,7 @@ public class DadosImoveis  implements IDadosImoveis  {
         private ArrayList<Apartamento> vetApartamento = new ArrayList<Apartamento>();
         private ArrayList<Terreno> vetTerreno = new ArrayList<Terreno>();
         private ArrayList<SalaComercial> vetComercial = new ArrayList<SalaComercial>();
+        private ArrayList<Imoveis> ativos = new ArrayList<Imoveis>();
 	
         
         
@@ -91,7 +93,7 @@ public class DadosImoveis  implements IDadosImoveis  {
 		System.out.println(this.vetImoveis.size());
         }
           public void Cadastrar(Terreno c){
-             this.vetImoveis.add(c);
+            this.vetImoveis.add(c);
             this.vetImoveis.add(c);
                 System.out.println("Total de imoveis inseridos:");
 		System.out.println(this.vetImoveis.size());
@@ -151,6 +153,27 @@ public class DadosImoveis  implements IDadosImoveis  {
     }
     public ArrayList<Imoveis> getImoveis(){
         return this.vetImoveis;
+    }
+    public Imoveis Get(int i ){
+        return this.vetImoveis.get(i);
+    }
+    public List<Imoveis> getAtivos(){
+         var ativos = vetImoveis.stream().filter( x-> x.Filter() == 1).collect(Collectors.toList());
+         return ativos;
+    }
+    public void setUso(Imoveis v){
+        int index = this.vetImoveis.indexOf(v);
+        var update = this.vetImoveis.get(index);
+        update.setSituacao("USO");
+        update.setLocacao(false);
+        update.setDisponivelLocacaoVenda(false);
+        vetImoveis.set(index, update);
+    }
+        public void seInativo(Imoveis v){
+        int index = this.vetImoveis.indexOf(v);
+        var update = this.vetImoveis.get(index);
+        update.setSituacao("INATIVO");
+        vetImoveis.set(index, update);
     }
 
 }

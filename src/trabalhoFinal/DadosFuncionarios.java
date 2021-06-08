@@ -36,5 +36,9 @@ public class DadosFuncionarios implements IDadosFuncionarios  {
 		 }
 		 return c;
 	}
+        public Funcionario Get(int i)
+        {
+            return this.vetFuncionario.get(i);
+        }
 
 }

@@ -178,7 +178,7 @@ public class crudFormaPagamento extends javax.swing.JFrame {
             try{
         FormaPagamento novo = new FormaPagamento();
             novo.tipo = tipo.getText();
-            this.formas.add(novo);
+            this.pag.Cadastrar(novo);
             }
         catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Há algum campo invalido");
