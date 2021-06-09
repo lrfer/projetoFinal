@@ -14,9 +14,9 @@ public class telaTransancao extends javax.swing.JFrame {
     DadosTransacao tran;
     DadosCorretor cor;
     DadosImoveis imov;
-    DadosClienteUsuario cli;
+    DadosClientes cli;
     public telaTransancao(DadosFormaPagamento pag, DadosTransacao tran,DadosCorretor cor,
-            DadosImoveis imov,DadosClienteUsuario cli){
+            DadosImoveis imov,DadosClientes cli){
         initComponents();
         this.pag = pag;
         this.tran = tran;

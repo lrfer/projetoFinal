@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Transacao {
 	public LocalDate dataTrasacao;
-	public int nroContato;
+	public String nroContato;
 	public ClienteUsuario clienteUsuario;
 	public Imoveis imoveis;
 	public FormaPagamento formaPagamento;
@@ -13,7 +13,7 @@ public class Transacao {
         public String ValorReal;
         public String ValorDestinadoImob;
 	
-	public Transacao(int nroContato, ClienteUsuario clienteUsuario, Imoveis imoveis,
+	public Transacao(String nroContato, ClienteUsuario clienteUsuario, Imoveis imoveis,
 			FormaPagamento formaPagamento, Corretor corretor,String valorCliente,String valorReal, String valorImob) {
 		super();
 		this.dataTrasacao = LocalDate.now();
@@ -29,7 +29,7 @@ public class Transacao {
 	
 	public Transacao(ClienteUsuario clienteUsuario, Imoveis imoveis) {
 		this.dataTrasacao = LocalDate.now();
-		this.nroContato = 1;
+		this.nroContato = "1";
 		this.formaPagamento = null;
 		this.corretor = null;
 		this.clienteUsuario = clienteUsuario;
@@ -50,12 +50,12 @@ public class Transacao {
 			return false;
 	}
 
-	public int getNroContato() {
+	public String getNroContato() {
 		return nroContato;
 	}
 	
 	public void efetuarTransacao(Transacao transacao,Imoveis imoveis,FormaPagamento pagamento,
-			Corretor corretor,boolean isVenda,int numeroContato, boolean corretorRealizou, double valorVenda) {
+			Corretor corretor,boolean isVenda,String numeroContato, boolean corretorRealizou, double valorVenda) {
 		corretor.setVendasMes(imoveis.getAluguelVendaCliente());
 		imoveis.venda = isVenda;
 		imoveis.locacao = !isVenda;
@@ -70,8 +70,8 @@ public class Transacao {
 			Corretor.calculaSalarioEspecifico(valorVenda);
 	}
 
-	public boolean setNroContato(int nroContato) {
-		if (nroContato > 0) {
+	public boolean setNroContato(String nroContato) {
+		if (nroContato.length() > 0) {
 			this.nroContato = nroContato;
 			return true;
 		}

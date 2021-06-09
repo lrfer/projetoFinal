@@ -8,6 +8,7 @@ public class Funcionario extends Pessoa {
 	public LocalDate DataIngressoImobiliaria;
 	public String Cargo;
 	public static double SalarioBase = 1000;
+        public Login login;
 	
 	public Funcionario(String cpf, String nome, String telContato, Endereco endereco, String telefone, String telCelular,
 			LocalDate dataIngressoImobiliaria, String cargo) {

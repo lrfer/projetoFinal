@@ -9,6 +9,7 @@ public class Login {
 		Usuario = usuario;
 		Senha = senha;
 	}
+        public Login(){}
 	
 	public String getUsuario() {
 		return Usuario;

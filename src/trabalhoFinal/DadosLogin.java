@@ -33,5 +33,21 @@ public class DadosLogin extends ArquivoBinario<Login>  implements IDadosLogin {
 		 }
 		 return c;
 	}
+        
+        public int Check(Login l){
+            for(Login login:this.vetLogin)
+            {
+                if(login.getUsuario().equals(l.Usuario)){
+                    if(login.getSenha().equals(l.Senha)){
+                        return 0;
+                    }
+                    return -1;
+                }
+            }
+            return -2;
+        }
+        public ArrayList<Login> getAll(){
+            return this.vetLogin;
+        }
 
 }

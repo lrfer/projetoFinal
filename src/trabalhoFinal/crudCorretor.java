@@ -24,6 +24,7 @@ public class crudCorretor extends javax.swing.JFrame {
         this.vetCorretor = this.cor.getCorretor();
         modo ="Navegar";
         this.DisplayBtn(modo);
+        this.LoadTable();
     }
     public crudCorretor() {
         initComponents();

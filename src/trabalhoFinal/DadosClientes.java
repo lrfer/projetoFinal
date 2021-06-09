@@ -1,5 +1,6 @@
 package trabalhoFinal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DadosClientes extends ArquivoBinario<Cliente> implements IDadosCLientes {
 	private ArrayList<Cliente> vetCliente = new ArrayList<Cliente>();
@@ -12,7 +13,8 @@ public class DadosClientes extends ArquivoBinario<Cliente> implements IDadosCLie
 		System.out.println("Total de clientes inseridos:");
 		System.out.println(this.vetCliente.size());
 	}
-	public void CadastrarUsuario(ClienteUsuario c) {
+	public void Cadastrar(ClienteUsuario c) {
+                this.vetCliente.add(c);
 		this.vetClienteUsuario.add(c);
 		System.out.println("Total de clientes inseridos:");
 		System.out.println(this.vetCliente.size() + vetClienteUsuario.size() );
@@ -46,5 +48,9 @@ public class DadosClientes extends ArquivoBinario<Cliente> implements IDadosCLie
 		 }
 		 return c;
 	}
+        public List<Cliente> getProprietarios(){
+             var cliente = this.vetCliente.stream().filter(x -> x.proprietario).collect(Collectors.toList());
+             return cliente;
+        }
 
 }

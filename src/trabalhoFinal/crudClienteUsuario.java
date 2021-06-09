@@ -11,15 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class crudClienteUsuario extends javax.swing.JFrame {
-    DadosClienteUsuario dadosClientes;
+    DadosClientes dadosClientes;
     ArrayList<ClienteUsuario> clientes;
     String modo;
     ArrayList<BomPagador> pagador = new ArrayList<BomPagador>();
     
-   public crudClienteUsuario(DadosClienteUsuario clientes){
+   public crudClienteUsuario(DadosClientes clientes){
        initComponents();
        this.dadosClientes = clientes;
-       this.clientes = dadosClientes.getClientesUsuarios();
+       this.clientes = dadosClientes.getClientesUsuario();
         modo = "Navegar";
         this.DisplayBtn(modo);
         LoadTable();

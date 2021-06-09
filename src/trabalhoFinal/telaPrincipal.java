@@ -4,15 +4,30 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class telaPrincipal extends javax.swing.JFrame {
-    private DadosImoveis dadosImoveis = new DadosImoveis();
-    private DadosClientes dadosClientes = new DadosClientes();
-    private DadosClienteUsuario dadosClientesUsuario = new DadosClienteUsuario();
-    private DadosCorretor dadosCorretor = new DadosCorretor();
-    private DadosFuncionarios dadosFuncionario = new DadosFuncionarios();
-    private DadosFormaPagamento dadosFormaPagamento = new DadosFormaPagamento();
-    private DadosTransacao dadosTransacao = new DadosTransacao();
+    private DadosImoveis dadosImoveis;
+    private DadosClientes dadosClientes;
+    private DadosCorretor dadosCorretor ;
+    private DadosFuncionarios dadosFuncionario ;
+    private DadosFormaPagamento dadosFormaPagamento;
+    private DadosTransacao dadosTransacao;
+    private DadosLogin dadosLogin;
     public telaPrincipal() {
         initComponents();
+        this.Check();
+    }
+    public telaPrincipal(DadosImoveis dadosImoveis,DadosClientes dadosClientes,DadosCorretor dadosCorretor,
+            DadosFuncionarios dadosFuncionario, DadosFormaPagamento dadosFormaPagamento,
+       DadosTransacao dadosTransacao, DadosLogin dadosLogin ){
+        initComponents();
+        this.dadosImoveis = dadosImoveis;
+        this.dadosClientes = dadosClientes;
+        this.dadosCorretor = dadosCorretor;
+        this.dadosFuncionario = dadosFuncionario;
+       this.dadosFormaPagamento = dadosFormaPagamento;
+       this.dadosTransacao = dadosTransacao;
+       this.dadosLogin = dadosLogin; 
+        this.Check();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -23,6 +38,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         btnFuncionarios = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         crudTransacao = new javax.swing.JButton();
+        Deslogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trabalho Final");
@@ -55,6 +71,13 @@ public class telaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        Deslogar.setText("Deslogar");
+        Deslogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeslogarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,11 +87,12 @@ public class telaPrincipal extends javax.swing.JFrame {
                 .addComponent(btnImoveis, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(crudTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crudTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Deslogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,7 +104,9 @@ public class telaPrincipal extends javax.swing.JFrame {
                     .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(crudTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(crudTransacao, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(Deslogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(45, 45, 45))
         );
 
@@ -99,7 +125,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                 + "Caso ao contrario ira dar erro Access denied",JOptionPane.QUESTION_MESSAGE,
     JOptionPane.YES_NO_OPTION);
         optionPane.setVisible(true);
-        telaClientes clientes = new telaClientes(this.dadosClientes,this.dadosClientesUsuario);
+        telaClientes clientes = new telaClientes(this.dadosClientes);
         clientes.setVisible(true);
     }//GEN-LAST:event_btnClientesMouseClicked
 
@@ -110,13 +136,30 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void crudTransacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudTransacaoActionPerformed
         telaTransancao tran = new telaTransancao(this.dadosFormaPagamento,this.dadosTransacao,
-        this.dadosCorretor,this.dadosImoveis,this.dadosClientesUsuario);
+        this.dadosCorretor,this.dadosImoveis,this.dadosClientes);
         tran.setVisible(true);
     }//GEN-LAST:event_crudTransacaoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void DeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeslogarActionPerformed
+        telaLogin login = new telaLogin(dadosImoveis, dadosClientes, dadosCorretor, dadosFuncionario, dadosFormaPagamento, 
+        dadosTransacao, dadosLogin,true);
+        login.setVisible(true);
+        super.dispose();
+    }//GEN-LAST:event_DeslogarActionPerformed
+private void Check(){
+    if(this.dadosImoveis == null)
+        this.dadosImoveis =  new DadosImoveis();
+    if(this.dadosClientes == null)
+        this.dadosClientes= new DadosClientes();
+    if(this.dadosCorretor == null)
+        this.dadosCorretor = new DadosCorretor();
+    if(this.dadosFuncionario == null)
+        this.dadosFuncionario = new DadosFuncionarios();
+    if(this.dadosFormaPagamento == null)
+        this.dadosFormaPagamento = new DadosFormaPagamento();
+    if( this.dadosTransacao == null)
+        this.dadosTransacao = new DadosTransacao();
+}
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -149,9 +192,11 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deslogar;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnFuncionarios;
     private javax.swing.JButton btnImoveis;
     private javax.swing.JButton crudTransacao;
     // End of variables declaration//GEN-END:variables
+
 }

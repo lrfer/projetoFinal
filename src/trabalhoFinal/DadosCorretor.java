@@ -37,5 +37,12 @@ public class DadosCorretor extends ArquivoBinario<Corretor> implements IDadosCor
         public Corretor get(int i){
             return this.vetCorretor.get(i);
         }
+        
+        public void AtualizaValores(Corretor c,double venda)
+        {
+            int index = this.vetCorretor.indexOf(c);
+            var cor = this.vetCorretor.get(index);
+            cor.calculaSalarioEspecifico(venda);
+        }
 
 }

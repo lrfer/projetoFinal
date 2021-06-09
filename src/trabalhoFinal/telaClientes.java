@@ -10,10 +10,8 @@ import java.util.ArrayList;
 public class telaClientes extends javax.swing.JFrame {
 
     DadosClientes clientes;
-    DadosClienteUsuario c;
-    public telaClientes(DadosClientes clientes,DadosClienteUsuario c){
+    public telaClientes(DadosClientes clientes){
         this.clientes = clientes;
-        this.c = c;
         initComponents();
     }
     public telaClientes() {
@@ -78,7 +76,7 @@ public class telaClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_clienteMouseClicked
 
     private void clienteUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clienteUsuarioMouseClicked
-        crudClienteUsuario cliente = new crudClienteUsuario(this.c);
+        crudClienteUsuario cliente = new crudClienteUsuario(this.clientes);
         cliente.setVisible(true);
     }//GEN-LAST:event_clienteUsuarioMouseClicked
 

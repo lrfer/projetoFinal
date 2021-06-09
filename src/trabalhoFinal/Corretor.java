@@ -59,7 +59,8 @@ public class Corretor extends Funcionario {
 	}
 	*/
 	public static void calculaSalarioEspecifico(double valorVenda) {
-		VendasMes = Funcionario.SalarioBase = (PorcentagemComissao * valorVenda);
+		VendasMes += 1;
+               Funcionario.SalarioBase += (PorcentagemComissao * valorVenda);
 	}
 	public void limpaVendasMes() {
 		VendasMes = 0;

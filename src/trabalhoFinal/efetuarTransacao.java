@@ -5,6 +5,7 @@
  */
 package trabalhoFinal;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -22,7 +23,9 @@ public class efetuarTransacao extends javax.swing.JFrame {
     ArrayList<Corretor> corretores;
     List<Imoveis> imoveis;
     ArrayList<ClienteUsuario> cliente;
-    public efetuarTransacao(DadosFormaPagamento pag,DadosCorretor cor, DadosImoveis imov,DadosTransacao dados,DadosClienteUsuario clientes){
+    ArrayList<Transacao> transacao;
+    int x;
+    public efetuarTransacao(DadosFormaPagamento pag,DadosCorretor cor, DadosImoveis imov,DadosTransacao dados,DadosClientes clientes){
         initComponents();
         this.pag = pag;
         this.cor = cor;
@@ -30,8 +33,9 @@ public class efetuarTransacao extends javax.swing.JFrame {
         this.corretores = cor.getCorretor();
         this.formas = pag.getFormaPagamento();
         this.imoveis = imov.getAtivos();
-        this.cliente = clientes.getClientesUsuarios();
+        this.cliente = clientes.getClientesUsuario();
         this.dados = dados;
+        this.transacao = dados.getAll();
         this.LoadLstImov();
         this.LoadLstPagamento();
        this.LoadLstCorretor();
@@ -89,6 +93,7 @@ public class efetuarTransacao extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         lstCorretor.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstCorretor.setVisibleRowCount(4);
         jScrollPane2.setViewportView(lstCorretor);
 
         jLabel3.setText("Forma de Pagamento");
@@ -99,6 +104,7 @@ public class efetuarTransacao extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         lstFormaPagamento.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstFormaPagamento.setVisibleRowCount(4);
         jScrollPane3.setViewportView(lstFormaPagamento);
 
         btnEfetuar.setText("Fazer transação");
@@ -122,13 +128,34 @@ public class efetuarTransacao extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        lstClienteUsuario.setVisibleRowCount(4);
         jScrollPane4.setViewportView(lstClienteUsuario);
 
         jLabel5.setText("Numero Contrato");
 
+        numeroContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroContratoActionPerformed(evt);
+            }
+        });
+        numeroContrato.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                numeroContratoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                numeroContratoKeyTyped(evt);
+            }
+        });
+
         jLabel6.setText("Valor sugerido Cliente Venda/Alugar(R$XX,XX)");
 
-        jLabel7.setText("Valor Real Venda/alugar(R$XX,XX)");
+        jLabel7.setText("Valor Real Venda/alugar(9999)");
+
+        valorRealVenda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                valorRealVendaKeyPressed(evt);
+            }
+        });
 
         jLabel8.setText("Valor destinado a Imob(R$XX,XX)");
 
@@ -216,7 +243,7 @@ public class efetuarTransacao extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(historicoTrasancao))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,6 +265,7 @@ public class efetuarTransacao extends javax.swing.JFrame {
         var pagamento = this.pag.Get(indexPagamento);
         var cliente = this.cliente.get(indexCliente);
         Transacao t = new Transacao();
+        t.nroContato = this.numeroContrato.getText();
         t.ValorDestinadoImob = this.valorDestinadoImob.getText();
         t.ValorReal = this.valorRealVenda.getText();
         t.valorCliente = this.valorSugeridoCliente.getText();
@@ -248,8 +276,12 @@ public class efetuarTransacao extends javax.swing.JFrame {
         t.clienteUsuario = new ClienteUsuario();
         t.clienteUsuario = cliente;
         t.imoveis = imovel;
+         this.cor.AtualizaValores(corretor, Double.parseDouble(this.valorRealVenda.getText()));
         this.imov.setUso(imovel);
         this.LoadLstImov();
+        this.LoadLstCliente();
+        this.LoadLstCorretor();
+        this.transacao.add(t);
         }
         catch(Exception ex){
             
@@ -257,6 +289,26 @@ public class efetuarTransacao extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnEfetuarActionPerformed
+
+    private void numeroContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroContratoActionPerformed
+        
+    }//GEN-LAST:event_numeroContratoActionPerformed
+
+    private void numeroContratoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroContratoKeyReleased
+  
+    }//GEN-LAST:event_numeroContratoKeyReleased
+
+    private void numeroContratoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroContratoKeyTyped
+        char c = evt.getKeyChar();
+                if(!(Character.isDigit(c) || c== KeyEvent.VK_BACK_SPACE))
+                    evt.consume();
+    }//GEN-LAST:event_numeroContratoKeyTyped
+
+    private void valorRealVendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorRealVendaKeyPressed
+        char c = evt.getKeyChar();
+                if(!(Character.isDigit(c) || c== KeyEvent.VK_BACK_SPACE))
+                    evt.consume();
+    }//GEN-LAST:event_valorRealVendaKeyPressed
 private void LoadLstCliente(){
      DefaultListModel<String> listModelPag = new DefaultListModel<>();
         for(ClienteUsuario p: cliente){
@@ -281,6 +333,7 @@ private void LoadLstCorretor(){
         this.lstCorretor.setModel(listModelCorretor);
     }
 private void LoadLstImov(){
+     this.imoveis = imov.getAtivos();
     DefaultListModel<String> listModelImov = new DefaultListModel<>();
         for(Imoveis p: imoveis){
             listModelImov.addElement(p.toString());

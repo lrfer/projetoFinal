@@ -17,9 +17,10 @@ public class historicoTransacao extends javax.swing.JFrame {
     DadosTransacao t;
     ArrayList<Transacao> ts;
     public historicoTransacao(DadosTransacao t) {
-        this.t =t;
-        ts = t.getAll();
-        initComponents();
+         ts = t.getAll();
+         initComponents();
+        this.LoadTable();
+        
     }
     public historicoTransacao() {
         initComponents();
@@ -95,7 +96,7 @@ public class historicoTransacao extends javax.swing.JFrame {
          DefaultTableModel model = new DefaultTableModel(new Object[]{
         "N#","N# Contrato","Corretor","Cliente","Valor Real","Imovel",
         },0);
-        if(this.ts.size() > 0){
+        if(this.ts != null && this.ts.size() > 0 ){
             for(Transacao c : ts){
                 Object linha []= new Object[]{ts.indexOf(c),c.nroContato,c.corretor.nome,c.clienteUsuario.nome,
                 c.ValorReal,c.imoveis.toString()};
