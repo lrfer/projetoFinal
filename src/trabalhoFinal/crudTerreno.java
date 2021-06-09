@@ -6,6 +6,8 @@
 package trabalhoFinal;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,14 +16,17 @@ public class crudTerreno extends javax.swing.JFrame {
     DadosClientes clientes;
     ArrayList<Terreno> terrenos;
     String modo;
+    List<Cliente> clientesProp;
     public crudTerreno(DadosClientes prop, DadosImoveis imoveis) {
         initComponents();
         this.dadosImoveis = imoveis;
         this.clientes = prop;
         modo = "Navegar";
-        this.DisplayBtn(modo);
         this.terrenos = imoveis.getTerrenos();
+        this.clientesProp = clientes.getProprietarios();
+        this.LoadList();
         this.LoadTable();
+        this.DisplayBtn(modo);
     }
 
     private crudTerreno() {
@@ -77,6 +82,10 @@ public class crudTerreno extends javax.swing.JFrame {
         gerarArquivoBinario = new javax.swing.JButton();
         save = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstProprietarios = new javax.swing.JList<>();
+        jLabel10 = new javax.swing.JLabel();
+        changeProp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CRUD Terreno");
@@ -191,6 +200,23 @@ public class crudTerreno extends javax.swing.JFrame {
             }
         });
 
+        lstProprietarios.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        lstProprietarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane3.setViewportView(lstProprietarios);
+
+        jLabel10.setText("Clientes Proprietarios");
+
+        changeProp.setText("Mudar proprietario");
+        changeProp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePropActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,59 +224,71 @@ public class crudTerreno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aclive)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(largura, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ruaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(6, 6, 6)
+                            .addComponent(aclive)
+                            .addComponent(isVenda)
+                            .addComponent(declive))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(comprimento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel10)
+                                .addGap(38, 38, 38)
+                                .addComponent(changeProp))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(isVenda)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(declive)
-                            .addGap(198, 198, 198)
-                            .addComponent(cancelar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(save))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(novo)
-                            .addGap(18, 18, 18)
-                            .addComponent(update)
-                            .addGap(35, 35, 35)
-                            .addComponent(delete)
-                            .addGap(55, 55, 55)
-                            .addComponent(gerarArquivoBinario))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(largura, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ruaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(rua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(comprimento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(novo)
+                                .addGap(18, 18, 18)
+                                .addComponent(update)
+                                .addGap(35, 35, 35)
+                                .addComponent(delete)
+                                .addGap(55, 55, 55)
+                                .addComponent(gerarArquivoBinario))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(124, 124, 124)
+                                    .addComponent(cancelar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(save))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -284,18 +322,26 @@ public class crudTerreno extends javax.swing.JFrame {
                     .addComponent(largura)
                     .addComponent(comprimento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(isVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(aclive)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(declive)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cancelar)
-                            .addComponent(save))))
-                .addGap(90, 90, 90)
+                        .addComponent(isVenda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(aclive)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(declive)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(changeProp))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelar)
+                    .addComponent(save))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(update)
                     .addComponent(novo)
@@ -392,6 +438,11 @@ public class crudTerreno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_modeloMousePressed
 
+    private void changePropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePropActionPerformed
+        this.clientesProp = clientes.getProprietarios();
+        this.LoadList();
+    }//GEN-LAST:event_changePropActionPerformed
+
      public void DisplayBtn(String mode){
        switch(mode)
        {
@@ -402,13 +453,16 @@ public class crudTerreno extends javax.swing.JFrame {
                update.setEnabled(false);
                save.setEnabled(false);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "New":
                this.enableForm();
+               this.LoadList();
                novo.setEnabled(false);
                update.setEnabled(false);
                save.setEnabled(true);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "Update":
                this.enableForm();
@@ -416,23 +470,33 @@ public class crudTerreno extends javax.swing.JFrame {
                update.setEnabled(false);
                save.setEnabled(true);
                delete.setEnabled(false);
+               changeProp.setEnabled(true);
                break;
            case "Delete":
                novo.setEnabled(true);
                update.setEnabled(false);
                save.setEnabled(false);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "Selection":
                novo.setEnabled(true);
                update.setEnabled(true);
                save.setEnabled(false);
                delete.setEnabled(true);
+               changeProp.setEnabled(false);
                break;
                
            default:System.out.print("Não definido");
        }
    }
+         public void LoadList(){
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+
+     for(Cliente c : clientesProp)
+         listModel.addElement(c.nome);
+this.lstProprietarios.setModel(listModel);
+ }
      
          private Terreno parseFormToObject(){
         Terreno result = new Terreno();
@@ -448,6 +512,11 @@ public class crudTerreno extends javax.swing.JFrame {
         result.setVenda(isVenda.isSelected());
         result.setAclive(aclive.isSelected());
         result.setDeclive(declive.isSelected());
+        result.lstCliente = new ArrayList<Cliente>();
+        result.lstCliente.clear();
+        int[] indexs = lstProprietarios.getSelectedIndices();
+        for(int i =0; i< indexs.length; i++)
+            result.lstCliente.add(this.clientesProp.get(indexs[i]));     
         return result;
     }
     private void clearForm(){
@@ -462,6 +531,9 @@ public class crudTerreno extends javax.swing.JFrame {
         isVenda.setSelected(false);
         aclive.setSelected(false);
         declive.setSelected(false);
+        this.clientesProp.clear();
+        this.clientesProp = clientes.getProprietarios();
+        this.LoadList();
     }
     private void disableForm(){
         rua.setEnabled(false);
@@ -475,6 +547,7 @@ public class crudTerreno extends javax.swing.JFrame {
         isVenda.setEnabled(false);
         aclive.setEnabled(false);
         declive.setEnabled(false);
+        this.lstProprietarios.setEnabled(false);
     }
     private void enableForm(){
          rua.setEnabled(true);
@@ -488,6 +561,7 @@ public class crudTerreno extends javax.swing.JFrame {
         isVenda.setEnabled(true);
         aclive.setEnabled(true);
         declive.setEnabled(true);
+        this.lstProprietarios.setEnabled(true);
     }
         private void fillForm(Terreno ap){
         rua.setText(ap.endereco.getRua());
@@ -501,6 +575,13 @@ public class crudTerreno extends javax.swing.JFrame {
         aclive.setSelected(ap.isAclive());
         declive.setSelected(ap.isDeclive());
         isVenda.setSelected(ap.isVenda());
+        if(ap.lstCliente != null && ap.lstCliente.size() > 0){
+        this.clientesProp.clear();
+        for(Cliente c : ap.lstCliente)
+            this.clientesProp.add(c);
+        this.LoadList();
+        this.lstProprietarios.getSelectionModel().setSelectionInterval(0, ap.lstCliente.size() - 1);
+        }
     }
   
     public static void main(String args[]) {
@@ -534,6 +615,7 @@ public class crudTerreno extends javax.swing.JFrame {
     private javax.swing.JTextField area;
     private javax.swing.JTextField bairro;
     private javax.swing.JButton cancelar;
+    private javax.swing.JButton changeProp;
     private javax.swing.JTextField cidade;
     private javax.swing.JTextField comprimento;
     private javax.swing.JCheckBox declive;
@@ -541,6 +623,7 @@ public class crudTerreno extends javax.swing.JFrame {
     private javax.swing.JButton gerarArquivoBinario;
     private javax.swing.JCheckBox isVenda;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -548,7 +631,9 @@ public class crudTerreno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField largura;
+    private javax.swing.JList<String> lstProprietarios;
     private javax.swing.JTable modelo;
     private javax.swing.JButton novo;
     private javax.swing.JTextField numero;

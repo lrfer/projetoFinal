@@ -1,8 +1,9 @@
 package trabalhoFinal;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Transacao {
+public class Transacao implements Serializable  {
 	public LocalDate dataTrasacao;
 	public String nroContato;
 	public ClienteUsuario clienteUsuario;

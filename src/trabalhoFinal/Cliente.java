@@ -1,8 +1,9 @@
 package trabalhoFinal;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Cliente extends Pessoa implements ICliente {
+public class Cliente extends Pessoa implements ICliente, Serializable  {
 
 	public String Email;
 	public String Sexo;

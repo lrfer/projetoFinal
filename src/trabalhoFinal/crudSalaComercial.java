@@ -6,6 +6,8 @@
 package trabalhoFinal;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,14 +20,17 @@ public class crudSalaComercial extends javax.swing.JFrame {
     DadosClientes clientes;
     ArrayList<SalaComercial> salas = new ArrayList<SalaComercial>();
     String modo;
+    List<Cliente> clientesProp;
     public crudSalaComercial(DadosClientes prop, DadosImoveis imoveis) {
         initComponents();
         this.dadosImoveis = imoveis;
         this.clientes = prop;
         this.salas = this.dadosImoveis.getSalasComercial();
         modo = "Navegar";
-        this.DisplayBtn(modo);
+        this.clientesProp = clientes.getProprietarios();
+        this.LoadList();
         this.LoadTable();
+        this.DisplayBtn(modo);
     }
 
     private crudSalaComercial() {
@@ -57,13 +62,16 @@ public class crudSalaComercial extends javax.swing.JFrame {
                update.setEnabled(false);
                save.setEnabled(false);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "New":
                this.enableForm();
+               this.LoadList();
                novo.setEnabled(false);
                update.setEnabled(false);
                save.setEnabled(true);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "Update":
                this.enableForm();
@@ -71,18 +79,21 @@ public class crudSalaComercial extends javax.swing.JFrame {
                update.setEnabled(false);
                save.setEnabled(true);
                delete.setEnabled(false);
+               changeProp.setEnabled(true);
                break;
            case "Delete":
                novo.setEnabled(true);
                update.setEnabled(false);
                save.setEnabled(false);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "Selection":
                novo.setEnabled(true);
                update.setEnabled(true);
                save.setEnabled(false);
                delete.setEnabled(true);
+               changeProp.setEnabled(false);
                break;
                
            default:System.out.print("Não definido");
@@ -118,6 +129,10 @@ public class crudSalaComercial extends javax.swing.JFrame {
         gerarArquivo = new javax.swing.JButton();
         save = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstProprietarios = new javax.swing.JList<>();
+        jLabel10 = new javax.swing.JLabel();
+        changeProp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CRUD Sala Comercial");
@@ -210,64 +225,91 @@ public class crudSalaComercial extends javax.swing.JFrame {
             }
         });
 
+        lstProprietarios.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        lstProprietarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane3.setViewportView(lstProprietarios);
+
+        jLabel10.setText("Clientes Proprietarios");
+
+        changeProp.setText("Mudar proprietario");
+        changeProp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePropActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(novo)
-                                .addGap(49, 49, 49)
-                                .addComponent(update))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelRua, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(qtdBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cancelar)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(qtdComodos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel7)
-                                        .addComponent(delete))))))
-                    .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(isVenda))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(348, 348, 348)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(save)
-                    .addComponent(gerarArquivo))
+                .addComponent(gerarArquivo)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(novo)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(update))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelRua, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(rua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(qtdBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(delete)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(save)
+                                                .addComponent(qtdComodos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addGap(38, 38, 38)
+                                                .addComponent(changeProp))))))
+                            .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(isVenda)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(cancelar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,12 +338,21 @@ public class crudSalaComercial extends javax.swing.JFrame {
                     .addComponent(qtdBanheiros)
                     .addComponent(qtdComodos, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(isVenda)
-                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(isVenda)
+                        .addGap(90, 90, 90))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addGap(29, 29, 29)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(changeProp)))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(save))
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(update)
                     .addComponent(novo)
@@ -309,7 +360,7 @@ public class crudSalaComercial extends javax.swing.JFrame {
                     .addComponent(gerarArquivo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -389,6 +440,18 @@ public class crudSalaComercial extends javax.swing.JFrame {
         DisplayBtn(modo);
         }
     }//GEN-LAST:event_modeloMousePressed
+
+    private void changePropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePropActionPerformed
+        this.clientesProp = clientes.getProprietarios();
+        this.LoadList();
+    }//GEN-LAST:event_changePropActionPerformed
+    public void LoadList(){
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+
+     for(Cliente c : clientesProp)
+         listModel.addElement(c.nome);
+this.lstProprietarios.setModel(listModel);
+ }
     private SalaComercial parseFormToObjetct(){
         SalaComercial result = new SalaComercial();
         result.endereco = new Endereco();
@@ -401,6 +464,11 @@ public class crudSalaComercial extends javax.swing.JFrame {
         result.setQtdBanheiros(Integer.parseInt(qtdBanheiros.getText()));
         result.setQtdComodos(Integer.parseInt(qtdComodos.getText()));
         result.setVenda(isVenda.isSelected());
+        result.lstCliente = new ArrayList<Cliente>();
+        result.lstCliente.clear();
+        int[] indexs = lstProprietarios.getSelectedIndices();
+        for(int i =0; i< indexs.length; i++)
+            result.lstCliente.add(this.clientesProp.get(indexs[i]));      
         return result;
     }
     private void clearForm(){
@@ -413,6 +481,9 @@ public class crudSalaComercial extends javax.swing.JFrame {
         qtdBanheiros.setText("");
         qtdComodos.setText("");
         isVenda.setSelected(false);
+        this.clientesProp.clear();
+        this.clientesProp = clientes.getProprietarios();
+        this.LoadList();
     }
     private void disableForm(){
         rua.setEnabled(false);
@@ -424,6 +495,7 @@ public class crudSalaComercial extends javax.swing.JFrame {
         qtdBanheiros.setEnabled(false);
         qtdComodos.setEnabled(false);
         isVenda.setEnabled(false);
+        this.lstProprietarios.setEnabled(false);
     }
     private void enableForm(){
          rua.setEnabled(true);
@@ -435,6 +507,7 @@ public class crudSalaComercial extends javax.swing.JFrame {
         qtdBanheiros.setEnabled(true);
         qtdComodos.setEnabled(true);
         isVenda.setEnabled(true);
+        this.lstProprietarios.setEnabled(true);
     }
         private void fillForm(SalaComercial ap){
         rua.setText(ap.endereco.getRua());
@@ -446,6 +519,13 @@ public class crudSalaComercial extends javax.swing.JFrame {
         qtdBanheiros.setText(String.valueOf(ap.getQtdBanheiros()));
         qtdComodos.setText(String.valueOf(ap.getQtdComodos()));
         isVenda.setSelected(ap.isVenda());
+        if(ap.lstCliente != null && ap.lstCliente.size() > 0){
+        this.clientesProp.clear();
+        for(Cliente c : ap.lstCliente)
+            this.clientesProp.add(c);
+        this.LoadList();
+        this.lstProprietarios.getSelectionModel().setSelectionInterval(0, ap.lstCliente.size() - 1);
+        }
     }
 
     public static void main(String args[]) {
@@ -486,11 +566,13 @@ public class crudSalaComercial extends javax.swing.JFrame {
     private javax.swing.JTextField area;
     private javax.swing.JTextField bairro;
     private javax.swing.JButton cancelar;
+    private javax.swing.JButton changeProp;
     private javax.swing.JTextField cidade;
     private javax.swing.JButton delete;
     private javax.swing.JButton gerarArquivo;
     private javax.swing.JCheckBox isVenda;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -498,7 +580,9 @@ public class crudSalaComercial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelRua;
+    private javax.swing.JList<String> lstProprietarios;
     private javax.swing.JTable modelo;
     private javax.swing.JButton novo;
     private javax.swing.JTextField numero;

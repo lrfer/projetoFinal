@@ -11,7 +11,7 @@ public class crudCasa extends javax.swing.JFrame {
     DadosImoveis dadosImoveis;
     DadosClientes clientes;
     ArrayList<Casa> casas;
-     List<Cliente> clientesProp;
+    List<Cliente> clientesProp;
      String modo;
     public crudCasa(DadosClientes clientes, DadosImoveis imoveis) {
         initComponents();
@@ -19,10 +19,10 @@ public class crudCasa extends javax.swing.JFrame {
         this.clientes = clientes;
         casas = this.dadosImoveis.getCasas();
         modo = "Navegar";
-        this.DisplayBtn(modo);
         LoadTable();
         this.clientesProp = clientes.getProprietarios();
         this.LoadList();
+        this.DisplayBtn(modo);
     }
     
     private crudCasa() {
@@ -88,6 +88,7 @@ public class crudCasa extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         lstProprietarios = new javax.swing.JList<>();
         jLabel10 = new javax.swing.JLabel();
+        changeProp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CRUD Casa");
@@ -201,10 +202,17 @@ public class crudCasa extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        lstProprietarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        lstProprietarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(lstProprietarios);
 
         jLabel10.setText("Clientes Proprietarios");
+
+        changeProp.setText("Mudar proprietario");
+        changeProp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePropActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,14 +221,17 @@ public class crudCasa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(condominio)
-                            .addComponent(isArmarioEmbutido))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(isArmarioEmbutido)
+                            .addComponent(isVenda)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(condominio)
+                                    .addComponent(isPiscina))
+                                .addGap(101, 101, 101)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -231,10 +242,14 @@ public class crudCasa extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(qtdSuites, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(qtdSuites, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(68, 68, 68)
+                                                .addComponent(jLabel9)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,8 +258,13 @@ public class crudCasa extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(qtdSalasEstar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(33, 33, 33)
-                                                .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel10)
+                                                        .addGap(38, 38, 38)
+                                                        .addComponent(changeProp))))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,31 +283,22 @@ public class crudCasa extends javax.swing.JFrame {
                                                 .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addComponent(isPiscina)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(isVenda)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
+                                .addGap(12, 12, 12)
                                 .addComponent(novo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(arquivoBinario))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jScrollPane3))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(arquivoBinario)))))
+                        .addGap(0, 54, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -321,34 +332,42 @@ public class crudCasa extends javax.swing.JFrame {
                     .addComponent(qtdSalasEstar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(isVenda)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(isVenda)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(isArmarioEmbutido)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(condominio)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(isPiscina))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
+                                .addComponent(isPiscina)
+                                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cancelar)
-                            .addComponent(salvar))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(novo)
-                            .addComponent(update)
-                            .addComponent(delete)
-                            .addComponent(arquivoBinario))
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(salvar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(changeProp)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(novo)
+                    .addComponent(update)
+                    .addComponent(delete)
+                    .addComponent(arquivoBinario))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -409,7 +428,7 @@ public class crudCasa extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void arquivoBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arquivoBinarioActionPerformed
-            if(this.casas.size() > 0)
+            if(this.casas != null && this.casas.size() > 0)
            this.dadosImoveis.GerarArquivoBinarioCasa(this.casas,"Casas");
         else
            System.out.print("Lista vazia");
@@ -438,6 +457,11 @@ public class crudCasa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_modeloMousePressed
 
+    private void changePropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePropActionPerformed
+         this.clientesProp = clientes.getProprietarios();
+         this.LoadList();
+    }//GEN-LAST:event_changePropActionPerformed
+
         private Casa parseFormToObject(){
         Casa result = new Casa();
         result.endereco = new Endereco();
@@ -453,6 +477,11 @@ public class crudCasa extends javax.swing.JFrame {
         result.setVenda(isVenda.isSelected());
         result.setArmarioEmbutido(isArmarioEmbutido.isSelected());
         result.setPiscina(isPiscina.isSelected());
+        result.lstCliente = new ArrayList<Cliente>();
+        result.lstCliente.clear();
+        int[] indexs = lstProprietarios.getSelectedIndices();
+        for(int i =0; i< indexs.length; i++)
+            result.lstCliente.add(this.clientesProp.get(indexs[i]));      
         return result;
     }
     private void clearForm(){
@@ -470,6 +499,9 @@ public class crudCasa extends javax.swing.JFrame {
         condominio.setSelected(false);
         isArmarioEmbutido.setSelected(false);
         isVenda.setSelected(false);
+        this.clientesProp.clear();
+        this.clientesProp = clientes.getProprietarios();
+        this.LoadList();
     }
     private void disableForm(){
         this.lstProprietarios.setEnabled(false);
@@ -487,6 +519,7 @@ public class crudCasa extends javax.swing.JFrame {
         condominio.setEnabled(false);
         isArmarioEmbutido.setEnabled(false);
         isVenda.setEnabled(false);
+        this.lstProprietarios.setEnabled(false);
     }
     private void enableForm(){
         this.lstProprietarios.setEnabled(true);
@@ -504,6 +537,7 @@ public class crudCasa extends javax.swing.JFrame {
         condominio.setEnabled(true);
         isArmarioEmbutido.setEnabled(true);
         isVenda.setEnabled(true);
+        this.lstProprietarios.setEnabled(true);
     }
         private void fillForm(Casa ap){
         rua.setText(ap.endereco.getRua());
@@ -520,6 +554,13 @@ public class crudCasa extends javax.swing.JFrame {
         condominio.setSelected(ap.getCondominio());
         isArmarioEmbutido.setSelected(ap.isArmarioEmbutido());
         isVenda.setSelected(ap.isVenda());
+        if(ap.lstCliente != null && ap.lstCliente.size() > 0){
+        this.clientesProp.clear();
+        for(Cliente c : ap.lstCliente)
+            this.clientesProp.add(c);
+        this.LoadList();
+        this.lstProprietarios.getSelectionModel().setSelectionInterval(0, ap.lstCliente.size() - 1);
+        }
     }
     
      public void DisplayBtn(String mode){
@@ -532,13 +573,16 @@ public class crudCasa extends javax.swing.JFrame {
                update.setEnabled(false);
                salvar.setEnabled(false);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "New":
                this.enableForm();
+               this.LoadList();
                novo.setEnabled(false);
                update.setEnabled(false);
                salvar.setEnabled(true);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "Update":
                this.enableForm();
@@ -546,18 +590,21 @@ public class crudCasa extends javax.swing.JFrame {
                update.setEnabled(false);
                salvar.setEnabled(true);
                delete.setEnabled(false);
+               changeProp.setEnabled(true);
                break;
            case "Delete":
                novo.setEnabled(true);
                update.setEnabled(false);
                salvar.setEnabled(false);
                delete.setEnabled(false);
+               changeProp.setEnabled(false);
                break;
            case "Selection":
                novo.setEnabled(true);
                update.setEnabled(true);
                salvar.setEnabled(false);
                delete.setEnabled(true);
+               changeProp.setEnabled(false);
                break;
                
            default:System.out.print("Não definido");
@@ -605,6 +652,7 @@ this.lstProprietarios.setModel(listModel);
     private javax.swing.JButton arquivoBinario;
     private javax.swing.JTextField bairro;
     private javax.swing.JButton cancelar;
+    private javax.swing.JButton changeProp;
     private javax.swing.JTextField cidade;
     private javax.swing.JCheckBox condominio;
     private javax.swing.JButton delete;

@@ -1,8 +1,9 @@
 package trabalhoFinal;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 
-public class Pessoa {
+public class Pessoa implements Serializable  {
 	public String cpf;
 	public String nome;
 	public String telContato;

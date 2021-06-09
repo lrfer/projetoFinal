@@ -147,6 +147,11 @@ public class crudCorretor extends javax.swing.JFrame {
         });
 
         jButton6.setText("Gerar Arquivo binario");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Curso Vendas");
 
@@ -338,6 +343,15 @@ public class crudCorretor extends javax.swing.JFrame {
         modo = "Update";
         DisplayBtn(modo);
     }//GEN-LAST:event_updateActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+            if(this.vetCorretor != null && this.vetCorretor.size() > 0){
+           this.cor.GerarArquivoBinarioCorretor(this.vetCorretor,"Corretor");
+           JOptionPane.showMessageDialog(null,"Arquivo gerado com sucesso em  C:\\Users\\Public\\Corretor");
+         }
+        else
+           System.out.print("Lista vazia");
+    }//GEN-LAST:event_jButton6ActionPerformed
    private void LoadTable(){
         DefaultTableModel model = new DefaultTableModel(new Object[]{
         "N#","Nome","CPF","Tel Contato","Tel Celular","Cargo","Salario","Vendas",

@@ -1,7 +1,8 @@
 package trabalhoFinal;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ClienteUsuario extends Cliente {
+public class ClienteUsuario extends Cliente implements Serializable  {
 	public ArrayList<BomPagador> BomPagador;
 
 	public ClienteUsuario(String nome, String cPF,Endereco endereco, String telContato, String email, String sexo,

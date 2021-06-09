@@ -1,7 +1,8 @@
 package trabalhoFinal;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Corretor extends Funcionario {	
+public class Corretor extends Funcionario implements Serializable  {	
 	public LocalDate DataInicioCorretor;
 	public String CursoVendas;
 	public static double VendasMes;

@@ -1,7 +1,8 @@
 package trabalhoFinal;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Residencial extends Imoveis implements IImoveis{
+public class Residencial extends Imoveis implements IImoveis, Serializable {
 	public int qtdQuartos;
 	public int qtdSuites;
 	public int qtdSalasEstar;

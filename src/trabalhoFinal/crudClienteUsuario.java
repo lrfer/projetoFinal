@@ -167,6 +167,11 @@ public class crudClienteUsuario extends javax.swing.JFrame {
         });
 
         arqBinario.setText("Gerar arquivo binario");
+        arqBinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arqBinarioActionPerformed(evt);
+            }
+        });
 
         lstBomPagador.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { };
@@ -437,6 +442,15 @@ public class crudClienteUsuario extends javax.swing.JFrame {
          modo = "Update";
         DisplayBtn(modo);
     }//GEN-LAST:event_updateActionPerformed
+
+    private void arqBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arqBinarioActionPerformed
+           if(this.clientes != null && this.clientes.size() > 0){
+           this.dadosClientes.GerarArquivoBinarioClienteUsuario(this.clientes,"ClientesUsuario");
+           JOptionPane.showMessageDialog(null,"Arquivo gerado com sucesso em  C:\\Users\\Public\\ClientesUsuario");
+         }
+        else
+           System.out.print("Lista vazia");
+    }//GEN-LAST:event_arqBinarioActionPerformed
     private void LoadList(boolean clear){
     DefaultListModel<String> listModel = new DefaultListModel<>();
     if(!clear){

@@ -161,6 +161,11 @@ public class crudCliente extends javax.swing.JFrame {
         });
 
         arqBinario.setText("Gerar arquivo binario");
+        arqBinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arqBinarioActionPerformed(evt);
+            }
+        });
 
         update.setText("Atualizar");
         update.addActionListener(new java.awt.event.ActionListener() {
@@ -371,6 +376,15 @@ public class crudCliente extends javax.swing.JFrame {
         modo = "Update";
         DisplayBtn(modo);
     }//GEN-LAST:event_updateActionPerformed
+
+    private void arqBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arqBinarioActionPerformed
+         if(this.clientes != null && this.clientes.size() > 0){
+           this.dadosClientes.GerarArquivoBinarioCliente(this.clientes,"Clientes");
+           JOptionPane.showMessageDialog(null,"Arquivo gerado com sucesso em  C:\\Users\\Public\\Clientes");
+         }
+        else
+           System.out.print("Lista vazia");
+    }//GEN-LAST:event_arqBinarioActionPerformed
 
    private void LoadTable(){
         DefaultTableModel model = new DefaultTableModel(new Object[]{

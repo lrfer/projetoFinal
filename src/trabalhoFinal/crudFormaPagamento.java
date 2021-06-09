@@ -43,6 +43,7 @@ public class crudFormaPagamento extends javax.swing.JFrame {
         cancelar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
         delete = new javax.swing.JButton();
+        gerarArquivoBinario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -101,6 +102,13 @@ public class crudFormaPagamento extends javax.swing.JFrame {
             }
         });
 
+        gerarArquivoBinario.setText("Gerar Arquivo binario");
+        gerarArquivoBinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerarArquivoBinarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,27 +116,24 @@ public class crudFormaPagamento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cancelar)
-                        .addGap(26, 26, 26))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)
-                                .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(novo)
-                                .addGap(18, 18, 18)
-                                .addComponent(update)
-                                .addGap(18, 18, 18)
-                                .addComponent(delete)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(novo)
+                        .addGap(18, 18, 18)
+                        .addComponent(update)
+                        .addGap(18, 18, 18)
+                        .addComponent(delete)
+                        .addGap(18, 18, 18)
+                        .addComponent(gerarArquivoBinario)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,18 +142,16 @@ public class crudFormaPagamento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelar))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(salvar)))
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(novo)
                     .addComponent(update)
-                    .addComponent(delete))
+                    .addComponent(delete)
+                    .addComponent(gerarArquivoBinario))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -215,6 +218,15 @@ public class crudFormaPagamento extends javax.swing.JFrame {
         modo = "Update";
         DisplayBtn(modo);
     }//GEN-LAST:event_updateActionPerformed
+
+    private void gerarArquivoBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarArquivoBinarioActionPerformed
+          if(this.formas != null && this.formas.size() > 0){
+           this.pag.GerarArquivoBinario(this.formas,"FormasDePagamento");
+           JOptionPane.showMessageDialog(null,"Arquivo gerado com sucesso em  C:\\Users\\Public\\FormasDePagamento");
+         }
+        else
+           System.out.print("Lista vazia");
+    }//GEN-LAST:event_gerarArquivoBinarioActionPerformed
         
    private void LoadTable(){
         DefaultTableModel model = new DefaultTableModel(new Object[]{
@@ -304,6 +316,7 @@ public class crudFormaPagamento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
     private javax.swing.JButton delete;
+    private javax.swing.JButton gerarArquivoBinario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton novo;

@@ -1,7 +1,8 @@
 package trabalhoFinal;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements Serializable  {
 	
 	public String Telefone;
 	public String TelCelular;

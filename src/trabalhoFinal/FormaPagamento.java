@@ -1,6 +1,8 @@
 package trabalhoFinal;
 
-public class FormaPagamento {
+import java.io.Serializable;
+
+public class FormaPagamento implements Serializable  {
 	public String tipo;
 
 	public FormaPagamento(String tipo) {

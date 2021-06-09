@@ -1,4 +1,6 @@
 package trabalhoFinal;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,6 +21,35 @@ public class DadosClientes extends ArquivoBinario<Cliente> implements IDadosCLie
 		System.out.println("Total de clientes inseridos:");
 		System.out.println(this.vetCliente.size() + vetClienteUsuario.size() );
 	}
+        public void GerarArquivoBinarioCliente(ArrayList<Cliente> lista,String nomeArquivo) {
+          String path = "C:\\Users\\Public\\" + nomeArquivo + ".tmp";
+           try{
+               for(Cliente c : lista){
+                   FileOutputStream fileOut = new FileOutputStream(path);
+                   ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+                   objOut.writeObject(c);
+                   System.out.print("Sucesso foi gravado em " + path);
+               }
+           }
+           catch(Exception ex){
+               System.out.print(ex);
+           }
+       } 
+        
+       public void GerarArquivoBinarioClienteUsuario(ArrayList<ClienteUsuario> lista,String nomeArquivo) {
+          String path = "C:\\Users\\Public\\" + nomeArquivo + ".tmp";
+           try{
+               for(ClienteUsuario c : lista){
+                   FileOutputStream fileOut = new FileOutputStream(path);
+                   ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+                   objOut.writeObject(c);
+                   System.out.print("Sucesso foi gravado em " + path);
+               }
+           }
+           catch(Exception ex){
+               System.out.print(ex);
+           }
+       }  
         
         
         public ArrayList<Cliente> getClientes(){

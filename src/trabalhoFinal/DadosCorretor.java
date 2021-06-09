@@ -1,5 +1,7 @@
 package trabalhoFinal;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class DadosCorretor extends ArquivoBinario<Corretor> implements IDadosCorretor  {
@@ -21,7 +23,22 @@ public class DadosCorretor extends ArquivoBinario<Corretor> implements IDadosCor
         public ArrayList<Corretor> getCorretor(){
             return this.vetCorretor;
         }
-	
+        
+        public void GerarArquivoBinarioCorretor(ArrayList<Corretor> lista,String nomeArquivo) {
+          String path = "C:\\Users\\Public\\" + nomeArquivo + ".tmp";
+           try{
+               for(Corretor c : lista){
+                   FileOutputStream fileOut = new FileOutputStream(path);
+                   ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+                   objOut.writeObject(c);
+                   System.out.print("Sucesso foi gravado em " + path);
+               }
+           }
+           catch(Exception ex){
+               System.out.print(ex);
+           }
+        }
+         
 	@Override
 	public Corretor Buscar(String nomeCliente ) {
 		Corretor c = null;

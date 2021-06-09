@@ -1,6 +1,8 @@
 package trabalhoFinal;
 
-public class Login {	
+import java.io.Serializable;
+
+public class Login implements Serializable  {	
 	public String Usuario;
 	public String Senha;
 	
